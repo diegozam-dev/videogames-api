@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-import regularSubSchema from '../utils/regularSubSchema.js'
 
 const gameSchema = new Schema(
   {
@@ -9,24 +8,28 @@ const gameSchema = new Schema(
       required: true
     },
     genres: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
+      ref: 'Genre',
       required: true
     },
     category: {
-      type: String,
-      maxlenght: 50,
+      type: Schema.Types.ObjectId,
+      ref: 'GameCategory',
       required: true
     },
     gameModes: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
+      ref: 'GameMode',
       required: true
     },
     audioLanguages: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
+      ref: 'Language',
       required: true
     },
     textLanguages: {
-      type: [String],
+      type: [Schema.Types.ObjectId],
+      ref: 'Language',
       required: true
     },
     releaseDate: {
@@ -34,15 +37,18 @@ const gameSchema = new Schema(
       required: true
     },
     publishers: {
-      type: [regularSubSchema],
+      type: [Schema.Types.ObjectId],
+      ref: 'Company',
       required: true
     },
     developers: {
-      type: [regularSubSchema],
+      type: [Schema.Types.ObjectId],
+      ref: 'Company',
       required: true
     },
     ageRating: {
       type: Schema.Types.ObjectId,
+      ref: 'AgeRating',
       required: true
     },
     coverUrl: {
@@ -50,12 +56,13 @@ const gameSchema = new Schema(
       required: true
     },
     platforms: {
-      type: [regularSubSchema],
+      type: [Schema.Types.ObjectId],
+      ref: 'Platform',
       required: true
     },
     similarGames: {
-      type: [regularSubSchema],
-      required: true
+      type: [Schema.Types.ObjectId],
+      ref: 'Game'
     }
   },
   { versionKey: false, timestamps: true }

@@ -8,8 +8,8 @@ const companySchema = new Schema(
       required: true
     },
     country: {
-      type: String,
-      maxlength: 50,
+      type: Schema.Types.ObjectId,
+      ref: 'Country',
       required: true
     },
     startDate: {

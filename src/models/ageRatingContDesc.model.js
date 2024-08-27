@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 
-const ageRatingContentDescriptionSchema = new Schema(
+const ageRatingContDescSchema = new Schema(
   {
     category: {
       type: String,
@@ -16,9 +16,6 @@ const ageRatingContentDescriptionSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const AgeRatingContentDescriptionModel = mongoose.model(
-  'AgeRatingContentDescription',
-  ageRatingContentDescriptionSchema
-)
+const AgeRatingContDescModel = mongoose.model('AgeRatingContDesc', ageRatingContDescSchema)
 
-export default AgeRatingContentDescriptionModel
+export default AgeRatingContDescModel

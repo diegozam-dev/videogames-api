@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-import regularSubSchema from '../utils/regularSubSchema.js'
 
 const platformSchema = new Schema(
   {
@@ -17,7 +16,8 @@ const platformSchema = new Schema(
       required: true
     },
     company: {
-      type: regularSubSchema,
+      type: Schema.Types.ObjectId,
+      ref: 'Company',
       required: true
     }
   },

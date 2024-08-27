@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose'
-import regularSubSchema from '../utils/regularSubSchema.js'
 
 const characterSchema = new Schema(
   {
@@ -9,17 +8,18 @@ const characterSchema = new Schema(
       required: true
     },
     gender: {
-      type: String,
-      maxlenght: 20,
+      type: Schema.Types.ObjectId,
+      ref: 'Gender',
       required: true
     },
     species: {
-      type: String,
-      maxlenght: 20,
+      type: Schema.Types.ObjectId,
+      ref: 'Species',
       required: true
     },
     games: {
-      type: [regularSubSchema],
+      type: [Schema.Types.ObjectId],
+      ref: 'Game',
       required: true
     },
     description: {
