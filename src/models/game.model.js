@@ -8,28 +8,28 @@ const gameSchema = new Schema(
       required: true
     },
     genres: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Genre',
+      type: [String],
+      maxlenght: 50,
       required: true
     },
     category: {
-      type: Schema.Types.ObjectId,
-      ref: 'GameCategory',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     gameModes: {
-      type: [Schema.Types.ObjectId],
-      ref: 'GameMode',
+      type: [String],
+      maxlenght: 50,
       required: true
     },
     audioLanguages: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Language',
+      type: [String],
+      maxlenght: 50,
       required: true
     },
     textLanguages: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Language',
+      type: [String],
+      maxlenght: 50,
       required: true
     },
     releaseDate: {
@@ -68,6 +68,6 @@ const gameSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const GameModel = mongoose.model('Game', gameSchema)
+const GameModel = mongoose.model('Game', gameSchema, 'Game')
 
 export default GameModel

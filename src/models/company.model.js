@@ -8,8 +8,8 @@ const companySchema = new Schema(
       required: true
     },
     country: {
-      type: Schema.Types.ObjectId,
-      ref: 'Country',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     startDate: {
@@ -33,6 +33,6 @@ const companySchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const CompanyModel = mongoose.model('Company', companySchema)
+const CompanyModel = mongoose.model('Company', companySchema, 'Company')
 
 export default CompanyModel

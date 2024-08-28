@@ -3,18 +3,17 @@ import mongoose, { Schema } from 'mongoose'
 const ageRatingSchema = new Schema(
   {
     category: {
-      type: Schema.Types.ObjectId,
-      ref: 'AgeRatingCategory',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     rating: {
-      type: Schema.Types.ObjectId,
-      ref: 'Rating',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     contentDescriptions: {
-      type: [Schema.Types.ObjectId],
-      ref: 'AgeRatingContDesc',
+      type: [String],
       required: true
     },
     coverUrl: {
@@ -25,6 +24,6 @@ const ageRatingSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const AgeRatingModel = mongoose.model('AgeRating', ageRatingSchema)
+const AgeRatingModel = mongoose.model('AgeRating', ageRatingSchema, 'AgeRating')
 
 export default AgeRatingModel

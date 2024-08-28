@@ -24,6 +24,6 @@ const platformSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const PlatformModel = mongoose.model('Platform', platformSchema)
+const PlatformModel = mongoose.model('Platform', platformSchema, 'Platform')
 
 export default PlatformModel

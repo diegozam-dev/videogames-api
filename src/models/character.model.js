@@ -8,13 +8,13 @@ const characterSchema = new Schema(
       required: true
     },
     gender: {
-      type: Schema.Types.ObjectId,
-      ref: 'Gender',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     species: {
-      type: Schema.Types.ObjectId,
-      ref: 'Species',
+      type: String,
+      maxlenght: 50,
       required: true
     },
     games: {
@@ -31,6 +31,6 @@ const characterSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
-const CharacterModel = mongoose.model('Character', characterSchema)
+const CharacterModel = mongoose.model('Character', characterSchema, 'Character')
 
 export default CharacterModel
