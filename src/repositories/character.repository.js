@@ -15,7 +15,6 @@ class CharacterRepository extends BaseRepository {
       .find({}, { createdAt: 0, updatedAt: 0 })
       .skip(skips)
       .limit(pageSize)
-      .populate({ path: 'gender', select: 'name' })
   }
 }
 

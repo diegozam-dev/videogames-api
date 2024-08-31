@@ -48,8 +48,7 @@ const gameSchema = new Schema(
     },
     ageRating: {
       type: Schema.Types.ObjectId,
-      ref: 'AgeRating',
-      required: true
+      ref: 'AgeRating'
     },
     coverUrl: {
       type: String,
