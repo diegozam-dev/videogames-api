@@ -32,10 +32,11 @@ class AgeRatingController {
   }
 
   async create(req, res, next) {
+    const { gameId } = req.params
     const { body } = req
 
     try {
-      const cratedAgeRating = await _ageRatingService.create(body)
+      const cratedAgeRating = await _ageRatingService.create(gameId, body)
 
       res.status(201).json({ status: 'Created', data: cratedAgeRating })
     } catch (err) {
