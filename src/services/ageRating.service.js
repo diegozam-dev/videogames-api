@@ -1,11 +1,12 @@
 import { AgeRatingRepository } from '../repositories/index.js'
 import BaseService from './base.service.js'
 
-const _ageRatingRepository = new AgeRatingRepository()
+let _ageRatingRepository = null
 
 class AgeRatingService extends BaseService {
   constructor() {
     super(AgeRatingRepository)
+    _ageRatingRepository = new AgeRatingRepository()
   }
 
   async getAll({ category, rating, pageSize, pageNum }) {
