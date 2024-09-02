@@ -18,15 +18,16 @@ const companySchema = new Schema(
     },
     developed: {
       type: [Schema.Types.ObjectId],
-      ref: 'Game'
+      ref: 'Game',
+      default: []
     },
     published: {
       type: [Schema.Types.ObjectId],
-      ref: 'Game'
+      ref: 'Game',
+      default: []
     },
     description: {
       type: String,
-      maxlength: 255,
       required: true
     }
   },
