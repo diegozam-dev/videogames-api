@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
+import mongooseAutoPopulate from 'mongoose-autopopulate'
 
 const platformSchema = new Schema(
   {
@@ -19,12 +20,14 @@ const platformSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company',
-      required: true
+      required: true,
+      autopopulate: true
     }
   },
   { versionKey: false, timestamps: true }
 )
 
+platformSchema.plugin(mongooseAutoPopulate)
 const PlatformModel = mongoose.model('Platform', platformSchema, 'Platform')
 
 export default PlatformModel

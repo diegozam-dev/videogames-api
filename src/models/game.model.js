@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
+import mongooseAutoPopulate from 'mongoose-autopopulate'
 
 const gameSchema = new Schema(
   {
@@ -67,6 +68,7 @@ const gameSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
+gameSchema.plugin(mongooseAutoPopulate)
 const GameModel = mongoose.model('Game', gameSchema, 'Game')
 
 export default GameModel

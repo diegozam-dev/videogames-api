@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
+import mongooseAutoPopulate from 'mongoose-autopopulate'
 
 const companySchema = new Schema(
   {
@@ -34,6 +35,7 @@ const companySchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
+companySchema.plugin(mongooseAutoPopulate)
 const CompanyModel = mongoose.model('Company', companySchema, 'Company')
 
 export default CompanyModel

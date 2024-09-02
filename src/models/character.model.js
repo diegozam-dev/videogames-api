@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
+import mongooseAutoPopulate from 'mongoose-autopopulate'
 
 const characterSchema = new Schema(
   {
@@ -31,6 +32,7 @@ const characterSchema = new Schema(
   { versionKey: false, timestamps: true }
 )
 
+characterSchema.plugin(mongooseAutoPopulate)
 const CharacterModel = mongoose.model('Character', characterSchema, 'Character')
 
 export default CharacterModel
