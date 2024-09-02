@@ -9,7 +9,8 @@ const platformSchema = new Schema(
     },
     abbreviation: {
       type: String,
-      maxlenght: 20
+      maxlenght: 20,
+      required: true
     },
     launchDate: {
       type: Date,
