@@ -7,7 +7,7 @@ const ageRatingRouter = Router()
 
 ageRatingRouter.get('/', ageRatingController.getAll)
 ageRatingRouter.get('/:ageRatingId', ageRatingController.getById)
-ageRatingRouter.post('/:gameId', ageRatingController.create)
+ageRatingRouter.post('/', ageRatingController.create)
 ageRatingRouter.put('/:ageRatingId', ageRatingController.update)
 ageRatingRouter.delete('/:ageRatingId', ageRatingController.delete)
 
