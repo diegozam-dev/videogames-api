@@ -40,16 +40,20 @@ const gameSchema = new Schema(
     publishers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
+      autopopulate: true,
       required: true
     },
     developers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
+      autopopulate: true,
       required: true
     },
     ageRating: {
       type: Schema.Types.ObjectId,
-      ref: 'AgeRating'
+      ref: 'AgeRating',
+      autopopulate: true,
+      default: null
     },
     coverUrl: {
       type: String,
@@ -58,11 +62,13 @@ const gameSchema = new Schema(
     platforms: {
       type: [Schema.Types.ObjectId],
       ref: 'Platform',
+      autopopulate: true,
       required: true
     },
     similarGames: {
       type: [Schema.Types.ObjectId],
-      ref: 'Game'
+      ref: 'Game',
+      autopopulate: true
     }
   },
   { versionKey: false, timestamps: true }

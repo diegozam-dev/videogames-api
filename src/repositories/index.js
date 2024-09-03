@@ -7,7 +7,7 @@ import PlatformRepository from './platform.repository.js'
 export {
   CharacterRepository,
   AgeRatingRepository,
-  GameRepository,
   CompanyRepository,
-  PlatformRepository
+  PlatformRepository,
+  GameRepository
 }

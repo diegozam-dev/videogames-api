@@ -20,8 +20,8 @@ const platformSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company',
-      required: true,
-      autopopulate: true
+      autopopulate: true,
+      required: true
     }
   },
   { versionKey: false, timestamps: true }

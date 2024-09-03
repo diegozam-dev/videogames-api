@@ -21,11 +21,11 @@ const characterSchema = new Schema(
     games: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
+      autopopulate: true,
       required: true
     },
     description: {
       type: String,
-      maxlenght: 255,
       required: true
     }
   },

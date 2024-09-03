@@ -8,14 +8,6 @@ class CharacterRepository extends BaseRepository {
     super(CharacterModel)
     _characterModel = CharacterModel
   }
-
-  async getAll(pageSize = 10, pageNum = 1) {
-    const skips = pageSize * (pageNum - 1)
-    return await _characterModel
-      .find({}, { createdAt: 0, updatedAt: 0 })
-      .skip(skips)
-      .limit(pageSize)
-  }
 }
 
 export default CharacterRepository

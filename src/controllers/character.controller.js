@@ -7,33 +7,64 @@ class CharacterController {
     _characterService = new CharacterService()
   }
 
-  async getAll(req, res) {
+  async getAll(req, res, next) {
+    const { query } = req
+
     try {
-      const { pageSize, pageNum } = req.query
+      const characters = await _characterService.getAll(query)
 
-      const result = await _characterService.getAll(pageSize, pageNum)
-
-      res.status(200).json({ data: result })
+      res.status(200).json({ status: 'Ok', data: characters })
     } catch (err) {
-      console.log(err.message)
+      next(err)
     }
   }
 
-  async create(req, res) {
+  async getById(req, res, next) {
+    const { characterId } = req.params
+
     try {
-      const { name, genderId, speciesId, games, description } = req.body
+      const character = await _characterService.getAll(characterId)
 
-      const character = await _characterService.create({
-        name,
-        gender: genderId,
-        species: speciesId,
-        games,
-        description
-      })
-
-      res.status(200).json({ data: character })
+      res.status(200).json({ status: 'Ok', data: character })
     } catch (err) {
-      console.log(err.message)
+      next(err)
+    }
+  }
+
+  async create(req, res, next) {
+    const { body } = req
+
+    try {
+      const createdCharacter = await _characterService.create(body)
+
+      res.status(201).json({ status: 'Created', data: createdCharacter })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  async update(req, res, next) {
+    const { characterId } = req.params
+    const { body } = req
+
+    try {
+      const updatedCharacter = await _characterService.update(characterId, body)
+
+      res.status(200).json({ status: 'Updated', data: updatedCharacter })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  async delete(req, res, next) {
+    const { characterId } = req.params
+
+    try {
+      const deletedCharacter = await _characterService.delete(characterId)
+
+      res.status(200).json({ status: 'Deleted', data: deletedCharacter })
+    } catch (err) {
+      next(err)
     }
   }
 }
