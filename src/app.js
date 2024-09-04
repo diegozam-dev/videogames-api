@@ -1,18 +1,21 @@
-import app from './server.js'
-import { PORT } from '../config.js'
-import { connectDB } from './db/connection.js'
+import express, { json } from 'express'
+import cors from 'cors'
+import router from './routes/index.js'
+import errorHandler from './middlewares/errorHandler.middleware.js'
 
-const start = async () => {
-  try {
-    await connectDB()
+const app = express()
 
-    app.listen(PORT, () => {
-      console.log('MongoDB connect successfully')
-      console.log(`Listening on port: ${PORT}`)
-    })
-  } catch (e) {
-    console.log(e.message)
-  }
-}
+// MIDDLEWARE
+app.use(json())
+app.use(cors())
 
-start()
+// CONFIG
+app.set('x-powered-by', null)
+
+// ROUTES
+app.use(router)
+
+// ERROR HANDLER
+app.use(errorHandler)
+
+export default app
