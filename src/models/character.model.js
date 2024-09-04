@@ -5,28 +5,28 @@ const characterSchema = new Schema(
   {
     name: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Name cannot exceed 50 characters'],
+      required: [true, 'Name is required']
     },
     gender: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Gender cannot exceed 50 characters'],
+      required: [true, 'Gender is required']
     },
     species: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Species cannot exceed 50 characters'],
+      required: [true, 'Species is required']
     },
     games: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
       autopopulate: true,
-      required: true
+      required: [true, 'Games are required']
     },
     description: {
       type: String,
-      required: true
+      required: [true, 'Description is required']
     }
   },
   { versionKey: false, timestamps: true }

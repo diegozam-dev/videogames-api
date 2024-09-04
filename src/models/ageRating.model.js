@@ -4,21 +4,21 @@ const ageRatingSchema = new Schema(
   {
     category: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Category cannot exceed 50 characters'],
+      required: [true, 'Category is required']
     },
     rating: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Rating cannot exceed 50 characters'],
+      required: [true, 'Rating is required']
     },
     contentDescriptions: {
       type: [String],
-      required: true
+      required: [true, 'Content descriptions are required']
     },
     coverUrl: {
       type: String,
-      required: true
+      required: [true, 'Cover URL is required']
     }
   },
   { versionKey: false, timestamps: true }

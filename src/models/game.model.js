@@ -5,65 +5,65 @@ const gameSchema = new Schema(
   {
     name: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Name cannot exceed 50 characters'],
+      required: [true, 'Name is required']
     },
     genres: {
       type: [String],
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Genres cannot exceed 50 characters'],
+      required: [true, 'Genres are required']
     },
     category: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Category cannot exceed 50 characters'],
+      required: [true, 'Category is required']
     },
     gameModes: {
       type: [String],
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Game modes cannot exceed 50 characters'],
+      required: [true, 'Game modes are required']
     },
     audioLanguages: {
       type: [String],
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Audio languages cannot exceed 50 characters'],
+      required: [true, 'Audio languages are required']
     },
     textLanguages: {
       type: [String],
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Text languages cannot exceed 50 characters'],
+      required: [true, 'Text languages are required']
     },
     releaseDate: {
       type: Date,
-      required: true
+      required: [true, 'Release date is required']
     },
     publishers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
       autopopulate: true,
-      required: true
+      required: [true, 'Publishers are required']
     },
     developers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
       autopopulate: true,
-      required: true
+      required: [true, 'Developers are required']
     },
     ageRating: {
       type: Schema.Types.ObjectId,
       ref: 'AgeRating',
       autopopulate: true,
-      required: true
+      required: [true, 'Age rating is required']
     },
     coverUrl: {
       type: String,
-      required: true
+      required: [true, 'Cover URL is required']
     },
     platforms: {
       type: [Schema.Types.ObjectId],
       ref: 'Platform',
       autopopulate: true,
-      required: true
+      required: [true, 'Platforms are required']
     },
     similarGames: {
       type: [Schema.Types.ObjectId],

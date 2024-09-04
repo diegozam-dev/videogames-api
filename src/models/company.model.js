@@ -5,17 +5,17 @@ const companySchema = new Schema(
   {
     name: {
       type: String,
-      maxlength: 50,
-      required: true
+      maxlength: [50, 'Name cannot exceed 50 characters'],
+      required: [true, 'Name is required']
     },
     country: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Country cannot exceed 50 characters'],
+      required: [true, 'Country is required']
     },
     startDate: {
       type: Date,
-      required: true
+      required: [true, 'Start date is required']
     },
     developed: {
       type: [Schema.Types.ObjectId],
@@ -31,7 +31,7 @@ const companySchema = new Schema(
     },
     description: {
       type: String,
-      required: true
+      required: [true, 'Description is required']
     }
   },
   { versionKey: false, timestamps: true }

@@ -5,23 +5,23 @@ const platformSchema = new Schema(
   {
     name: {
       type: String,
-      maxlenght: 50,
-      required: true
+      maxlength: [50, 'Name cannot exceed 50 characters'],
+      required: [true, 'Name is required']
     },
     abbreviation: {
       type: String,
-      maxlenght: 20,
-      required: true
+      maxlength: [20, 'Abbreviation cannot exceed 20 characters'],
+      required: [true, 'Abbreviation is required']
     },
     launchDate: {
       type: Date,
-      required: true
+      required: [true, 'Launch date is required']
     },
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company',
       autopopulate: true,
-      required: true
+      required: [true, 'Company is required']
     }
   },
   { versionKey: false, timestamps: true }
