@@ -16,7 +16,7 @@ const errorHandler = (err, req, res, next) => {
 
   return res.status(httpStatus).json({
     status: httpStatus,
-    messages: messages.length > 0 || 'Internal server error'
+    messages: messages.length > 0 ? messages : 'Internal server error'
   })
 }
 
