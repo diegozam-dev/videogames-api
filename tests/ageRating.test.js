@@ -78,7 +78,7 @@ describe('Age Rating Tests', () => {
         .post('/v1/api/age-ratings')
         .send({
           category:
-            '"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et',
+            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et',
           contentDescriptions: ['Violence', 'Blood and Gore'],
           coverUrl: 'http://example.com/esrb-m-cover.jpg'
         })
@@ -101,17 +101,17 @@ describe('Age Rating Tests', () => {
         })
         .set('Accept', 'application/json')
 
-      const createdAgeRating = res.body.data
+      const updatedAgeRating = res.body.data
 
       expect(res.status).toEqual(200)
-      expect(createdAgeRating._id).toEqual('66da0c53e880c15d9c9a39f4')
-      expect(createdAgeRating.category).toEqual('ESRB')
-      expect(createdAgeRating.rating).toEqual('M')
-      expect(createdAgeRating.contentDescriptions).toEqual([
+      expect(updatedAgeRating._id).toEqual('66da0c53e880c15d9c9a39f4')
+      expect(updatedAgeRating.category).toEqual('ESRB')
+      expect(updatedAgeRating.rating).toEqual('M')
+      expect(updatedAgeRating.contentDescriptions).toEqual([
         'Violence',
         'Blood and Gore'
       ])
-      expect(createdAgeRating.coverUrl).toEqual(
+      expect(updatedAgeRating.coverUrl).toEqual(
         'http://example.com/esrb-m-cover.jpg'
       )
     })
