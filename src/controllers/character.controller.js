@@ -23,7 +23,7 @@ class CharacterController {
     const { characterId } = req.params
 
     try {
-      const character = await _characterService.getAll(characterId)
+      const character = await _characterService.getById(characterId)
 
       res.status(200).json({ status: 'Ok', data: character })
     } catch (err) {
