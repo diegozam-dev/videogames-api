@@ -1,5 +1,11 @@
 import mongoose from 'mongoose'
 
+const STATUS_CODES = {
+  400: 'Bad Request',
+  404: 'Not Found',
+  500: 'Internal Server Error'
+}
+
 const errorHandler = (err, req, res, next) => {
   const messages = []
   let httpStatus
@@ -15,7 +21,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   return res.status(httpStatus).json({
-    status: httpStatus,
+    status: STATUS_CODES[httpStatus],
     messages: messages.length > 0 ? messages : 'Internal server error'
   })
 }
