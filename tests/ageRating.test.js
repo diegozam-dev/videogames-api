@@ -33,6 +33,7 @@ describe('Age Rating Tests', () => {
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Ok')
       expect(error).toBeUndefined()
+      expect(res.body.data._id).toEqual('66da1deae9b730782e7dc664')
     })
 
     test('Doing a get request to “v1/api/age-ratings/66d21b1d8f8e28baa6982ee8” should return an error because the entity does not exist.', async () => {
@@ -121,7 +122,7 @@ describe('Age Rating Tests', () => {
 
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Updated')
-      expect(updatedAgeRating._id).toEqual('66da1deae9b730782e7dc668')
+      expect(res.body.data._id).toEqual('66da1deae9b730782e7dc668')
       expect(updatedAgeRating.category).toEqual('Everyone 11+')
       expect(updatedAgeRating.rating).toEqual('E11+')
       expect(updatedAgeRating.contentDescriptions).toEqual([
