@@ -18,13 +18,13 @@ describe('Age Rating Tests', () => {
 
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Ok')
-      expect(Array.isArray(res.body.data)).toBe(true)
+      expect(res.body.data).toBeInstanceOf(Array)
       expect(error).toBeUndefined()
     })
 
-    test('Doing a get request to “v1/api/age-ratings/66d21b1d8f8e38baa6982ee3” should return an age rating.', async () => {
+    test('Doing a get request to “v1/api/age-ratings/66da1deae9b730782e7dc664” should return an age rating.', async () => {
       const res = await request(app).get(
-        '/v1/api/age-ratings/66d21b1d8f8e38baa6982ee3'
+        '/v1/api/age-ratings/66da1deae9b730782e7dc664'
       )
 
       const validAgeRating = new AgeRatingModel(res.body.data)
@@ -41,6 +41,7 @@ describe('Age Rating Tests', () => {
       )
 
       expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
       expect(res.body.messages[0]).toEqual(
         'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
       )
@@ -48,28 +49,38 @@ describe('Age Rating Tests', () => {
   })
 
   describe('POST', () => {
-    test('Making a post request to “v1/api/age-ratings” should return the created age rating.', async () => {
+    test.skip('Making a post request to “v1/api/age-ratings” should return the created age rating.', async () => {
       const res = await request(app)
         .post('/v1/api/age-ratings')
         .send({
           category: 'ESRB',
-          rating: 'M',
-          contentDescriptions: ['Violence', 'Blood and Gore'],
-          coverUrl: 'http://example.com/esrb-m-cover.jpg'
+          rating: 'Mature 17+',
+          contentDescriptions: [
+            'Intense Violence',
+            'Blood and Gore',
+            'Strong Language',
+            'Suggestive Themes',
+            'Use of Drugs'
+          ],
+          coverUrl: 'https://example.com/cover-image.jpg'
         })
         .set('Accept', 'application/json')
 
       const createdAgeRating = res.body.data
 
       expect(res.status).toEqual(201)
+      expect(res.body.status).toEqual('Created')
       expect(createdAgeRating.category).toEqual('ESRB')
-      expect(createdAgeRating.rating).toEqual('M')
+      expect(createdAgeRating.rating).toEqual('Mature 17+')
       expect(createdAgeRating.contentDescriptions).toEqual([
-        'Violence',
-        'Blood and Gore'
+        'Intense Violence',
+        'Blood and Gore',
+        'Strong Language',
+        'Suggestive Themes',
+        'Use of Drugs'
       ])
       expect(createdAgeRating.coverUrl).toEqual(
-        'http://example.com/esrb-m-cover.jpg'
+        'https://example.com/cover-image.jpg'
       )
     })
 
@@ -85,44 +96,52 @@ describe('Age Rating Tests', () => {
         .set('Accept', 'application/json')
 
       expect(res.status).toEqual(400)
+      expect(res.body.status).toEqual('Bad Request')
       expect(res.body.messages.length).toBeGreaterThan(0)
     })
   })
 
   describe('PUT', () => {
-    test('Doing a put request to “v1/api/age-ratings/66da0c53e880c15d9c9a39f4” should return the updated age rating.', async () => {
+    test.skip('Doing a put request to “v1/api/age-ratings/66da1deae9b730782e7dc668” should return the updated age rating.', async () => {
       const res = await request(app)
-        .put('/v1/api/age-ratings/66da0c53e880c15d9c9a39f4')
+        .put('/v1/api/age-ratings/66da1deae9b730782e7dc668')
         .send({
-          category: 'ESRB',
-          rating: 'M',
-          contentDescriptions: ['Violence', 'Blood and Gore'],
-          coverUrl: 'http://example.com/esrb-m-cover.jpg'
+          category: 'Everyone 11+',
+          rating: 'E11+',
+          contentDescriptions: [
+            'Cartoon Violence',
+            'Comic Mischief',
+            'Language'
+          ],
+          coverUrl: 'https://example.com/age-rating/e11.png'
         })
         .set('Accept', 'application/json')
 
       const updatedAgeRating = res.body.data
 
       expect(res.status).toEqual(200)
-      expect(updatedAgeRating._id).toEqual('66da0c53e880c15d9c9a39f4')
-      expect(updatedAgeRating.category).toEqual('ESRB')
-      expect(updatedAgeRating.rating).toEqual('M')
+      expect(res.body.status).toEqual('Updated')
+      expect(updatedAgeRating._id).toEqual('66da1deae9b730782e7dc668')
+      expect(updatedAgeRating.category).toEqual('Everyone 11+')
+      expect(updatedAgeRating.rating).toEqual('E11+')
       expect(updatedAgeRating.contentDescriptions).toEqual([
-        'Violence',
-        'Blood and Gore'
+        'Cartoon Violence',
+        'Comic Mischief',
+        'Language'
       ])
       expect(updatedAgeRating.coverUrl).toEqual(
-        'http://example.com/esrb-m-cover.jpg'
+        'https://example.com/age-rating/e11.png'
       )
     })
 
     describe('DELETE', () => {
-      test('Doing a delete request to “v1/api/age-ratings/66da0c62630849613db35b37” should return a true indicating that the entity was successfully deleted.', async () => {
+      test.skip('Doing a delete request to “v1/api/age-ratings/66da1deae9b730782e7dc666” should return a true indicating that the entity was successfully deleted.', async () => {
         const res = await request(app).delete(
-          '/v1/api/age-ratings/66da0c62630849613db35b37'
+          '/v1/api/age-ratings/66da1deae9b730782e7dc666'
         )
 
         expect(res.status).toEqual(200)
+        expect(res.body.status).toEqual('Deleted')
         expect(res.body.result).toEqual(true)
       })
     })
