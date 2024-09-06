@@ -114,17 +114,17 @@ describe('Company Tests', () => {
         'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
       )
     })
+  })
 
-    describe('DELETE', () => {
-      test.skip('Doing a delete request to “v1/api/companies/66da1b3ce9b730782e7dc65d” should return a true indicating that the entity was successfully deleted.', async () => {
-        const res = await request(app).delete(
-          '/v1/api/companies/66da1b3ce9b730782e7dc65d'
-        )
+  describe('DELETE', () => {
+    test.skip('Doing a delete request to “v1/api/companies/66da1b3ce9b730782e7dc65d” should return a true indicating that the entity was successfully deleted.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/companies/66da1b3ce9b730782e7dc65d'
+      )
 
-        expect(res.status).toEqual(200)
-        expect(res.body.status).toEqual('Deleted')
-        expect(res.body.result).toEqual(true)
-      })
+      expect(res.status).toEqual(200)
+      expect(res.body.status).toEqual('Deleted')
+      expect(res.body.result).toEqual(true)
     })
   })
 })

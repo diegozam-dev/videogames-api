@@ -134,17 +134,17 @@ describe('Age Rating Tests', () => {
         'https://example.com/age-rating/e11.png'
       )
     })
+  })
 
-    describe('DELETE', () => {
-      test.skip('Doing a delete request to “v1/api/age-ratings/66da1deae9b730782e7dc666” should return a true indicating that the entity was successfully deleted.', async () => {
-        const res = await request(app).delete(
-          '/v1/api/age-ratings/66da1deae9b730782e7dc666'
-        )
+  describe('DELETE', () => {
+    test.skip('Doing a delete request to “v1/api/age-ratings/66da1deae9b730782e7dc666” should return a true indicating that the entity was successfully deleted.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/age-ratings/66da1deae9b730782e7dc666'
+      )
 
-        expect(res.status).toEqual(200)
-        expect(res.body.status).toEqual('Deleted')
-        expect(res.body.result).toEqual(true)
-      })
+      expect(res.status).toEqual(200)
+      expect(res.body.status).toEqual('Deleted')
+      expect(res.body.result).toEqual(true)
     })
   })
 })

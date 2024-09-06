@@ -122,17 +122,17 @@ describe('Character Tests', () => {
         'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
       )
     })
+  })
 
-    describe('DELETE', () => {
-      test.skip('Doing a delete request to “v1/api/characters/66db4a4e523626bb53b88a35” should return a true indicating that the entity was successfully deleted.', async () => {
-        const res = await request(app).delete(
-          '/v1/api/characters/66db4a4e523626bb53b88a35'
-        )
+  describe('DELETE', () => {
+    test.skip('Doing a delete request to “v1/api/characters/66db4a4e523626bb53b88a35” should return a true indicating that the entity was successfully deleted.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/characters/66db4a4e523626bb53b88a35'
+      )
 
-        expect(res.status).toEqual(200)
-        expect(res.body.status).toEqual('Deleted')
-        expect(res.body.result).toEqual(true)
-      })
+      expect(res.status).toEqual(200)
+      expect(res.body.status).toEqual('Deleted')
+      expect(res.body.result).toEqual(true)
     })
   })
 })

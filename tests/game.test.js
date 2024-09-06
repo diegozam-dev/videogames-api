@@ -156,17 +156,17 @@ describe('Game Tests', () => {
       expect(updatedGame.platforms).toEqual(['66da1ceee9b730782e7dc663'])
       expect(updatedGame.similarGames).toEqual([])
     })
+  })
 
-    describe('DELETE', () => {
-      test.skip('Doing a delete request to “v1/api/games/66da1ea1e9b730782e7dc66b” should return a true indicating that the entity was successfully deleted.', async () => {
-        const res = await request(app).delete(
-          '/v1/api/games/66da1ea1e9b730782e7dc66b'
-        )
+  describe('DELETE', () => {
+    test.skip('Doing a delete request to “v1/api/games/66da1ea1e9b730782e7dc66b” should return a true indicating that the entity was successfully deleted.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/games/66da1ea1e9b730782e7dc66b'
+      )
 
-        expect(res.status).toEqual(200)
-        expect(res.body.status).toEqual('Deleted')
-        expect(res.body.result).toEqual(true)
-      })
+      expect(res.status).toEqual(200)
+      expect(res.body.status).toEqual('Deleted')
+      expect(res.body.result).toEqual(true)
     })
   })
 })
