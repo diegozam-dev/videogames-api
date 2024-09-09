@@ -49,12 +49,6 @@ const gameSchema = new Schema(
       autopopulate: true,
       required: [true, 'Developers are required']
     },
-    ageRating: {
-      type: Schema.Types.ObjectId,
-      ref: 'AgeRating',
-      autopopulate: true,
-      required: [true, 'Age rating is required']
-    },
     coverUrl: {
       type: String,
       required: [true, 'Cover URL is required']

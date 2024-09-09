@@ -63,7 +63,6 @@ describe('Game Tests', () => {
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          ageRating: '66da1deae9b730782e7dc667',
           coverUrl: 'https://example.com/gears-5-cover.png',
           platforms: ['66da1ceee9b730782e7dc662']
         })
@@ -82,7 +81,6 @@ describe('Game Tests', () => {
       expect(createdGame.releaseDate).toEqual('2019-09-10T00:00:00.000Z')
       expect(createdGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(createdGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
-      expect(createdGame.ageRating).toEqual('66da1deae9b730782e7dc667')
       expect(createdGame.coverUrl).toEqual(
         'https://example.com/gears-5-cover.png'
       )
@@ -125,7 +123,6 @@ describe('Game Tests', () => {
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          ageRating: '66da1deae9b730782e7dc666',
           coverUrl: 'https://example.com/halo-infinite-cover.png',
           platforms: ['66da1ceee9b730782e7dc663'],
           similarGames: []
@@ -149,7 +146,6 @@ describe('Game Tests', () => {
       expect(updatedGame.releaseDate).toEqual('2021-12-08T00:00:00.000Z')
       expect(updatedGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(updatedGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
-      expect(updatedGame.ageRating).toEqual('66da1deae9b730782e7dc666')
       expect(updatedGame.coverUrl).toEqual(
         'https://example.com/halo-infinite-cover.png'
       )
