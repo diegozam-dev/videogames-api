@@ -5,6 +5,6 @@ export const {
   MONGODB_URI,
   DB_NAME,
   SECRET_JWT_KEY,
-  USERNAME,
+  USER_NAME,
   PASSWORD
 } = process.env
