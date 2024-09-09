@@ -42,7 +42,16 @@ class BaseService {
       throw err
     }
 
-    return await this.repository.update(id, entity)
+    const updatedEntity = await this.repository.update(id, entity)
+
+    if (!updatedEntity) {
+      const err = new Error()
+      err.status = 404
+      err.message = `Entity, with id: ${id}, does not found`
+      throw err
+    }
+
+    return updatedEntity
   }
 
   async delete(id) {
