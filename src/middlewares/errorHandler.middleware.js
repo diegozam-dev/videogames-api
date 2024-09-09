@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { JsonWebTokenError } from 'jsonwebtoken'
 import STATUS_CODES from '../utils/statusCodes.utils.js'
 
 const errorHandler = (err, req, res, next) => {
@@ -10,6 +11,9 @@ const errorHandler = (err, req, res, next) => {
 
     messages = errKeys.map(key => err.errors[key].message)
     httpStatus = 400
+  } else if (err instanceof JsonWebTokenError) {
+    httpStatus = 403
+    messages = 'Token not valid'
   } else {
     httpStatus = err.status || 500
     messages = err.message
