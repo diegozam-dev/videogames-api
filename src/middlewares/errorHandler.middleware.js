@@ -1,10 +1,5 @@
 import mongoose from 'mongoose'
-
-const STATUS_CODES = {
-  400: 'Bad Request',
-  404: 'Not Found',
-  500: 'Internal Server Error'
-}
+import STATUS_CODES from '../utils/statusCodes.utils.js'
 
 const errorHandler = (err, req, res, next) => {
   let messages
