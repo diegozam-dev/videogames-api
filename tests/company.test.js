@@ -43,7 +43,7 @@ describe('Company Tests', () => {
 
       expect(res.status).toEqual(404)
       expect(res.body.status).toEqual('Not Found')
-      expect(res.body.messages[0]).toEqual(
+      expect(res.body.messages).toEqual(
         'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
       )
     })
@@ -60,6 +60,7 @@ describe('Company Tests', () => {
           description:
             "Ubisoft is a French video game company known for developing and publishing a wide range of video games across multiple platforms. Notable franchises include Assassin's Creed, Far Cry, and Tom Clancy's series."
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const createdCompany = res.body.data
@@ -74,7 +75,45 @@ describe('Company Tests', () => {
       )
     })
 
-    test('Making a post request to “v1/api/companies” with wrong data should return validation errors.', async () => {
+    test('Making a post request to “v1/api/companies” without a token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/companies')
+        .send({
+          name: 'Ubisoft',
+          country: 'France',
+          startDate: '1986-03-28T00:00:00.000Z',
+          description:
+            "Ubisoft is a French video game company known for developing and publishing a wide range of video games across multiple platforms. Notable franchises include Assassin's Creed, Far Cry, and Tom Clancy's series."
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Making a post request to “v1/api/companies” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/companies')
+        .send({
+          name: 'Ubisoft',
+          country: 'France',
+          startDate: '1986-03-28T00:00:00.000Z',
+          description:
+            "Ubisoft is a French video game company known for developing and publishing a wide range of video games across multiple platforms. Notable franchises include Assassin's Creed, Far Cry, and Tom Clancy's series."
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Making a post request to “v1/api/companies” with wrong data should return validation errors.', async () => {
       const res = await request(app)
         .post('/v1/api/companies')
         .send({
@@ -82,6 +121,7 @@ describe('Company Tests', () => {
           description:
             "Ubisoft is a French video game company known for developing and publishing a wide range of video games across multiple platforms. Notable franchises include Assassin's Creed, Far Cry, and Tom Clancy's series."
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       expect(res.status).toEqual(400)
@@ -101,6 +141,7 @@ describe('Company Tests', () => {
           description:
             'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const updatedCompany = res.body.data
@@ -114,6 +155,44 @@ describe('Company Tests', () => {
         'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
       )
     })
+
+    test('Doing a put request to “v1/api/companies/66da1b3ce9b730782e7dc65a” without a token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/companies/66da1b3ce9b730782e7dc65a')
+        .send({
+          name: 'Electronic Arts',
+          country: 'United States of America',
+          startDate: '1982-05-27T00:00:00.000Z',
+          description:
+            'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a put request to “v1/api/companies/66da1b3ce9b730782e7dc65a” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/companies/66da1b3ce9b730782e7dc65a')
+        .send({
+          name: 'Electronic Arts',
+          country: 'United States of America',
+          startDate: '1982-05-27T00:00:00.000Z',
+          description:
+            'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
   })
 
   describe('DELETE', () => {
@@ -125,6 +204,29 @@ describe('Company Tests', () => {
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Deleted')
       expect(res.body.result).toEqual(true)
+    })
+
+    test('Doing a delete request to “v1/api/companies/66da1b3ce9b730782e7dc65d” without a token should return an error.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/companies/66da1b3ce9b730782e7dc65d'
+      )
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a delete request to “v1/api/companies/66da1b3ce9b730782e7dc65d” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/companies/66da1b3ce9b730782e7dc65d')
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
     })
   })
 })

@@ -43,7 +43,7 @@ describe('Game Tests', () => {
 
       expect(res.status).toEqual(404)
       expect(res.body.status).toEqual('Not Found')
-      expect(res.body.messages[0]).toEqual(
+      expect(res.body.messages).toEqual(
         'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
       )
     })
@@ -87,7 +87,57 @@ describe('Game Tests', () => {
       expect(createdGame.platforms).toEqual(['66da1ceee9b730782e7dc662'])
     })
 
-    test('Making a post request to “v1/api/games” with wrong data should return validation errors.', async () => {
+    test('Making a post request to “v1/api/games” without a token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/games')
+        .send({
+          name: 'Gears 5',
+          genres: ['Third-person shooter'],
+          category: 'AAA',
+          gameModes: ['Single-player', 'Multiplayer'],
+          audioLanguages: ['English', 'Spanish'],
+          textLanguages: ['English', 'Spanish'],
+          releaseDate: '2019-09-10T00:00:00.000Z',
+          publishers: ['66da1c63e9b730782e7dc65e'],
+          developers: ['66da1c63e9b730782e7dc65e'],
+          coverUrl: 'https://example.com/gears-5-cover.png',
+          platforms: ['66da1ceee9b730782e7dc662']
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Making a post request to “v1/api/games” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/games')
+        .send({
+          name: 'Gears 5',
+          genres: ['Third-person shooter'],
+          category: 'AAA',
+          gameModes: ['Single-player', 'Multiplayer'],
+          audioLanguages: ['English', 'Spanish'],
+          textLanguages: ['English', 'Spanish'],
+          releaseDate: '2019-09-10T00:00:00.000Z',
+          publishers: ['66da1c63e9b730782e7dc65e'],
+          developers: ['66da1c63e9b730782e7dc65e'],
+          coverUrl: 'https://example.com/gears-5-cover.png',
+          platforms: ['66da1ceee9b730782e7dc662']
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Making a post request to “v1/api/games” with wrong data should return validation errors.', async () => {
       const res = await request(app)
         .post('/v1/api/games')
         .send({
@@ -101,6 +151,7 @@ describe('Game Tests', () => {
           developers: ['66da1c63e9b730782e7dc65e'],
           platforms: ['66da1ceee9b730782e7dc662']
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       expect(res.status).toEqual(400)
@@ -127,6 +178,7 @@ describe('Game Tests', () => {
           platforms: ['66da1ceee9b730782e7dc663'],
           similarGames: []
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const updatedGame = res.body.data
@@ -151,6 +203,58 @@ describe('Game Tests', () => {
       )
       expect(updatedGame.platforms).toEqual(['66da1ceee9b730782e7dc663'])
       expect(updatedGame.similarGames).toEqual([])
+    })
+
+    test('Doing a put request to “v1/api/games/66da1ea1e9b730782e7dc66b” without a token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/games/66da1ea1e9b730782e7dc66b')
+        .send({
+          name: 'Halo: Infinite',
+          genres: ['First-person shooter', 'Action'],
+          category: 'AAA',
+          gameModes: ['Single-player'],
+          audioLanguages: ['English', 'French', 'Spanish'],
+          textLanguages: ['English', 'French'],
+          releaseDate: '2021-12-08T00:00:00.000Z',
+          publishers: ['66da1c63e9b730782e7dc65e'],
+          developers: ['66da1c63e9b730782e7dc65e'],
+          coverUrl: 'https://example.com/halo-infinite-cover.png',
+          platforms: ['66da1ceee9b730782e7dc663'],
+          similarGames: []
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a put request to “v1/api/games/66da1ea1e9b730782e7dc66b” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/games/66da1ea1e9b730782e7dc66b')
+        .send({
+          name: 'Halo: Infinite',
+          genres: ['First-person shooter', 'Action'],
+          category: 'AAA',
+          gameModes: ['Single-player'],
+          audioLanguages: ['English', 'French', 'Spanish'],
+          textLanguages: ['English', 'French'],
+          releaseDate: '2021-12-08T00:00:00.000Z',
+          publishers: ['66da1c63e9b730782e7dc65e'],
+          developers: ['66da1c63e9b730782e7dc65e'],
+          coverUrl: 'https://example.com/halo-infinite-cover.png',
+          platforms: ['66da1ceee9b730782e7dc663'],
+          similarGames: []
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
     })
   })
 

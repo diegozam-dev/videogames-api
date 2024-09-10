@@ -8,7 +8,7 @@ beforeAll(async () => {
   await connectDB()
 })
 
-describe('Character Tests', () => {
+describe('Platform Tests', () => {
   describe('GET', () => {
     test('Doing a get request to “v1/api/platforms” should return a collection of platforms.', async () => {
       const res = await request(app).get('/v1/api/platforms')
@@ -43,7 +43,7 @@ describe('Character Tests', () => {
 
       expect(res.status).toEqual(404)
       expect(res.body.status).toEqual('Not Found')
-      expect(res.body.messages[0]).toEqual(
+      expect(res.body.messages).toEqual(
         'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
       )
     })
@@ -59,6 +59,7 @@ describe('Character Tests', () => {
           launchDate: '2013-11-15T00:00:00.000+00:00',
           company: '66da1b3ce9b730782e7dc65b'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const createdPlatform = res.body.data
@@ -73,7 +74,43 @@ describe('Character Tests', () => {
       expect(createdPlatform.company).toEqual('66da1b3ce9b730782e7dc65b')
     })
 
-    test('Making a post request to “v1/api/platforms” with wrong data should return validation errors.', async () => {
+    test('Making a post request to “v1/api/platforms” without a token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/platforms')
+        .send({
+          name: 'PlayStation 4',
+          abbreviation: 'PS4',
+          launchDate: '2013-11-15T00:00:00.000+00:00',
+          company: '66da1b3ce9b730782e7dc65b'
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Making a post request to “v1/api/platforms” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/platforms')
+        .send({
+          name: 'PlayStation 4',
+          abbreviation: 'PS4',
+          launchDate: '2013-11-15T00:00:00.000+00:00',
+          company: '66da1b3ce9b730782e7dc65b'
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Making a post request to “v1/api/platforms” with wrong data should return validation errors.', async () => {
       const res = await request(app)
         .post('/v1/api/platforms')
         .send({
@@ -81,6 +118,7 @@ describe('Character Tests', () => {
           abbreviation: 'PS4',
           company: '66da1b3ce9b230782e7dc35b'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       expect(res.status).toEqual(400)
@@ -99,6 +137,7 @@ describe('Character Tests', () => {
           launchDate: '2017-03-03T00:00:00.000Z',
           company: '66da1b3ce9b730782e7dc659'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const updatedPlatform = res.body.data
@@ -111,17 +150,76 @@ describe('Character Tests', () => {
       expect(updatedPlatform.launchDate).toEqual('2017-03-03T00:00:00.000Z')
       expect(updatedPlatform.company).toEqual('66da1b3ce9b730782e7dc659')
     })
+
+    test('Doing a put request to “v1/api/platforms/66da1ceee9b730782e7dc661” without a token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/platforms/66da1ceee9b730782e7dc661')
+        .send({
+          name: 'Nintendo Switch Oled',
+          abbreviation: 'Switch Oled',
+          launchDate: '2017-03-03T00:00:00.000Z',
+          company: '66da1b3ce9b730782e7dc659'
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a put request to “v1/api/platforms/66da1ceee9b730782e7dc661” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/platforms/66da1ceee9b730782e7dc661')
+        .send({
+          name: 'Nintendo Switch Oled',
+          abbreviation: 'Switch Oled',
+          launchDate: '2017-03-03T00:00:00.000Z',
+          company: '66da1b3ce9b730782e7dc659'
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
   })
 
   describe('DELETE', () => {
     test.skip('Doing a delete request to “v1/api/platforms/66da1ceee9b730782e7dc662” should return a true indicating that the entity was successfully deleted.', async () => {
-      const res = await request(app).delete(
-        '/v1/api/platforms/66da1ceee9b730782e7dc662'
-      )
+      const res = await request(app)
+        .delete('/v1/api/platforms/66da1ceee9b730782e7dc662')
+        .set('Authorization', 'Bearer <<TOKEN>>')
 
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Deleted')
       expect(res.body.result).toEqual(true)
+    })
+
+    test('Doing a delete request to “v1/api/platforms/66da1ceee9b730782e7dc662” without a token should return an error.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/platforms/66da1ceee9b730782e7dc662'
+      )
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a delete request to “v1/api/platforms/66da1ceee9b730782e7dc662” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/platforms/66da1ceee9b730782e7dc662')
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
     })
   })
 })

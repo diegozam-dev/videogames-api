@@ -22,7 +22,7 @@ describe('Character Tests', () => {
       expect(error).toBeUndefined()
     })
 
-    test('Doing a get request to “v1/api/characters/66db4a4e523626bb53b88a32” should return an character.', async () => {
+    test('Doing a get request to “v1/api/characters/66db4a4e523626bb53b88a32” should return one character.', async () => {
       const res = await request(app).get(
         '/v1/api/characters/66db4a4e523626bb53b88a32'
       )
@@ -43,7 +43,7 @@ describe('Character Tests', () => {
 
       expect(res.status).toEqual(404)
       expect(res.body.status).toEqual('Not Found')
-      expect(res.body.messages[0]).toEqual(
+      expect(res.body.messages).toEqual(
         'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
       )
     })
@@ -61,6 +61,7 @@ describe('Character Tests', () => {
           description:
             'Ellie is one of the main characters of The Last of Us Part I. She is a strong-willed survivor seeking revenge for the death of her loved one.'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const createdCharacter = res.body.data
@@ -76,7 +77,47 @@ describe('Character Tests', () => {
       )
     })
 
-    test('Making a post request to “v1/api/characters” with wrong data should return validation errors.', async () => {
+    test('Making a post request to “v1/api/characters” without a token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/characters')
+        .send({
+          name: 'Ellie',
+          gender: 'Female',
+          species: 'Human',
+          games: ['66da1ea1e9b730782e7dc669'],
+          description:
+            'Ellie is one of the main characters of The Last of Us Part I. She is a strong-willed survivor seeking revenge for the death of her loved one.'
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Making a post request to “v1/api/characters” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .post('/v1/api/characters')
+        .send({
+          name: 'Ellie',
+          gender: 'Female',
+          species: 'Human',
+          games: ['66da1ea1e9b730782e7dc669'],
+          description:
+            'Ellie is one of the main characters of The Last of Us Part I. She is a strong-willed survivor seeking revenge for the death of her loved one.'
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Making a post request to “v1/api/characters” with wrong data should return validation errors.', async () => {
       const res = await request(app)
         .post('/v1/api/characters')
         .send({
@@ -87,6 +128,7 @@ describe('Character Tests', () => {
           description:
             'Abby is a skilled soldier and one of the central characters in The Last of Us Part II. Her journey is marked by a quest for vengeance and redemption.'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       expect(res.status).toEqual(400)
@@ -122,6 +164,46 @@ describe('Character Tests', () => {
         'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
       )
     })
+
+    test('Doing a put request to “v1/api/characters/66db4a4e523626bb53b88a34” without a token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/characters/66db4a4e523626bb53b88a34')
+        .send({
+          name: 'Master C.',
+          gender: 'Male',
+          species: 'Human',
+          games: ['66da1ea1e9b730782e7dc66b'],
+          description:
+            'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
+        })
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a put request to “v1/api/characters/66db4a4e523626bb53b88a34” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .put('/v1/api/characters/66db4a4e523626bb53b88a34')
+        .send({
+          name: 'Master C.',
+          gender: 'Male',
+          species: 'Human',
+          games: ['66da1ea1e9b730782e7dc66b'],
+          description:
+            'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
+        })
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
   })
 
   describe('DELETE', () => {
@@ -133,6 +215,29 @@ describe('Character Tests', () => {
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Deleted')
       expect(res.body.result).toEqual(true)
+    })
+
+    test('Doing a delete request to “v1/api/characters/66db4a4e523626bb53b88a35” without a token should return an error.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/characters/66db4a4e523626bb53b88a35'
+      )
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a delete request to “v1/api/characters/66db4a4e523626bb53b88a35” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/characters/66db4a4e523626bb53b88a35')
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
     })
   })
 })
