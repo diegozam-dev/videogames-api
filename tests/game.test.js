@@ -63,7 +63,6 @@ describe('Game Tests', () => {
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/gears-5-cover.png',
           platforms: ['66da1ceee9b730782e7dc662']
         })
         .set('Accept', 'application/json')
@@ -81,9 +80,6 @@ describe('Game Tests', () => {
       expect(createdGame.releaseDate).toEqual('2019-09-10T00:00:00.000Z')
       expect(createdGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(createdGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
-      expect(createdGame.coverUrl).toEqual(
-        'https://example.com/gears-5-cover.png'
-      )
       expect(createdGame.platforms).toEqual(['66da1ceee9b730782e7dc662'])
     })
 
@@ -100,7 +96,6 @@ describe('Game Tests', () => {
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/gears-5-cover.png',
           platforms: ['66da1ceee9b730782e7dc662']
         })
         .set('Accept', 'application/json')
@@ -123,7 +118,6 @@ describe('Game Tests', () => {
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/gears-5-cover.png',
           platforms: ['66da1ceee9b730782e7dc662']
         })
         .set(
@@ -174,7 +168,6 @@ describe('Game Tests', () => {
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/halo-infinite-cover.png',
           platforms: ['66da1ceee9b730782e7dc663'],
           similarGames: []
         })
@@ -198,9 +191,6 @@ describe('Game Tests', () => {
       expect(updatedGame.releaseDate).toEqual('2021-12-08T00:00:00.000Z')
       expect(updatedGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(updatedGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
-      expect(updatedGame.coverUrl).toEqual(
-        'https://example.com/halo-infinite-cover.png'
-      )
       expect(updatedGame.platforms).toEqual(['66da1ceee9b730782e7dc663'])
       expect(updatedGame.similarGames).toEqual([])
     })
@@ -218,7 +208,6 @@ describe('Game Tests', () => {
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/halo-infinite-cover.png',
           platforms: ['66da1ceee9b730782e7dc663'],
           similarGames: []
         })
@@ -242,7 +231,6 @@ describe('Game Tests', () => {
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
-          coverUrl: 'https://example.com/halo-infinite-cover.png',
           platforms: ['66da1ceee9b730782e7dc663'],
           similarGames: []
         })

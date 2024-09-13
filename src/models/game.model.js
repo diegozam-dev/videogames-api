@@ -49,10 +49,6 @@ const gameSchema = new Schema(
       autopopulate: true,
       required: [true, 'Developers are required']
     },
-    coverUrl: {
-      type: String,
-      required: [true, 'Cover URL is required']
-    },
     platforms: {
       type: [Schema.Types.ObjectId],
       ref: 'Platform',
