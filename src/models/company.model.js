@@ -20,13 +20,13 @@ const companySchema = new Schema(
     developed: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       default: []
     },
     published: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       default: []
     },
     description: {

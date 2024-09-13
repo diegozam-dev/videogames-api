@@ -20,7 +20,7 @@ const platformSchema = new Schema(
     company: {
       type: Schema.Types.ObjectId,
       ref: 'Company',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       required: [true, 'Company is required']
     }
   },

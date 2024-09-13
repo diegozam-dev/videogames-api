@@ -21,7 +21,7 @@ const characterSchema = new Schema(
     games: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       required: [true, 'Games are required']
     },
     description: {

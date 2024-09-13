@@ -40,19 +40,19 @@ const gameSchema = new Schema(
     publishers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       required: [true, 'Publishers are required']
     },
     developers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       required: [true, 'Developers are required']
     },
     platforms: {
       type: [Schema.Types.ObjectId],
       ref: 'Platform',
-      autopopulate: true,
+      autopopulate: { maxDepth: 1, select: 'name' },
       required: [true, 'Platforms are required']
     },
     similarGames: {
