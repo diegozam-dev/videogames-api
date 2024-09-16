@@ -11,12 +11,14 @@ const characterSchema = new Schema(
     gender: {
       type: String,
       maxlength: [50, 'Gender cannot exceed 50 characters'],
-      required: [true, 'Gender is required']
+      required: [true, 'Gender is required'],
+      default: 'Unknown'
     },
     species: {
       type: String,
       maxlength: [50, 'Species cannot exceed 50 characters'],
-      required: [true, 'Species is required']
+      required: [true, 'Species is required'],
+      default: 'Unknown'
     },
     games: {
       type: [Schema.Types.ObjectId],
