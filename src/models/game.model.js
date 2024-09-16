@@ -40,25 +40,38 @@ const gameSchema = new Schema(
     publishers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
-      autopopulate: { maxDepth: 1, select: 'name' },
+      autopopulate: {
+        maxDepth: 1,
+        select: 'name country startDate developed published description'
+      },
       required: [true, 'Publishers are required']
     },
     developers: {
       type: [Schema.Types.ObjectId],
       ref: 'Company',
-      autopopulate: { maxDepth: 1, select: 'name' },
+      autopopulate: {
+        maxDepth: 1,
+        select: 'name country startDate developed published description'
+      },
       required: [true, 'Developers are required']
     },
     platforms: {
       type: [Schema.Types.ObjectId],
       ref: 'Platform',
-      autopopulate: { maxDepth: 1, select: 'name' },
+      autopopulate: {
+        maxDepth: 1,
+        select: 'name abbreviation launchDate company'
+      },
       required: [true, 'Platforms are required']
     },
     similarGames: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: true
+      autopopulate: {
+        maxDepth: 1,
+        select:
+          'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
+      }
     }
   },
   { versionKey: false, timestamps: true }

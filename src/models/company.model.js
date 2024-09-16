@@ -20,14 +20,22 @@ const companySchema = new Schema(
     developed: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: { maxDepth: 1, select: 'name' },
-      default: []
+      autopopulate: {
+        maxDepth: 1,
+        select:
+          'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
+      },
+      default: null
     },
     published: {
       type: [Schema.Types.ObjectId],
       ref: 'Game',
-      autopopulate: { maxDepth: 1, select: 'name' },
-      default: []
+      autopopulate: {
+        maxDepth: 1,
+        select:
+          'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
+      },
+      default: null
     },
     description: {
       type: String,
