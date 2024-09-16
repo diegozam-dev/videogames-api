@@ -71,7 +71,8 @@ const gameSchema = new Schema(
         maxDepth: 1,
         select:
           'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
-      }
+      },
+      default: null
     }
   },
   { versionKey: false, timestamps: true }
