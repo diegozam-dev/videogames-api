@@ -73,6 +73,8 @@ characterRouter.get('/:characterId', characterController.getById)
  *    - Character
  *   summary: Crear un personaje.
  *   description: Retorna el personaje creado.
+ *   security:
+ *    - BearerAuth: []
  *   requestBody:
  *    required: true
  *    content:
@@ -111,6 +113,8 @@ characterRouter.post('/', verifyToken, characterController.create)
  *   description: Retorna el personaje actualizado.
  *   parameters:
  *    - $ref: '#/components/parameters/characterIdParam'
+ *   security:
+ *    - BearerAuth: []
  *   requestBody:
  *    required: true
  *    content:
@@ -147,6 +151,8 @@ characterRouter.put('/:characterId', verifyToken, characterController.update)
  *    - Character
  *   summary: Eliminar un personaje.
  *   description: Retorna "True" si el proceso fue completado.
+ *   security:
+ *    - BearerAuth: []
  *   parameters:
  *    - $ref: '#/components/parameters/characterIdParam'
  *   responses:
