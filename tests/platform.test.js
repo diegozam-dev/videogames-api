@@ -186,6 +186,18 @@ describe('Platform Tests', () => {
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
     })
+
+    test.skip('Doing a put request to “v1/api/platforms/66db4a4e523226bb53b88a34” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .put('/v1/api/platforms/66db4a4e523226bb53b88a34')
+        .set('Authorization', 'Bearer <<TOKEN>>')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
+      )
+    })
   })
 
   describe('DELETE', () => {
@@ -220,6 +232,18 @@ describe('Platform Tests', () => {
       expect(res.status).toEqual(403)
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Doing a delete request to “v1/api/platforms/66db4a4e523226bb53b88a34” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/platforms/66db4a4e523226bb53b88a34')
+        .set('Authorization', 'Bearer <<TOKEN>>')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
+      )
     })
   })
 })

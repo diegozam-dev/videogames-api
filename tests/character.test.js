@@ -149,6 +149,7 @@ describe('Character Tests', () => {
           description:
             'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const updatedCharacter = res.body.data
@@ -204,6 +205,27 @@ describe('Character Tests', () => {
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
     })
+
+    test.skip('Doing a put request to “v1/api/characters/66db4a4e523226bb53b88a34” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .put('/v1/api/characters/66db4a4e523226bb53b88a34')
+        .send({
+          name: 'Master C.',
+          gender: 'Male',
+          species: 'Human',
+          games: ['66da1ea1e9b730782e7dc66b'],
+          description:
+            'Master Chief is a super-soldier known as a Spartan-II, and the protagonist of the Halo series.'
+        })
+        .set('Authorization', 'Bearer <<TOKEN>>')
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
+      )
+    })
   })
 
   describe('DELETE', () => {
@@ -238,6 +260,18 @@ describe('Character Tests', () => {
       expect(res.status).toEqual(403)
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Doing a delete request to “v1/api/characters/66db4a4e523226bb53b88a34” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/characters/66db4a4e523226bb53b88a34')
+        .set('Authorization', 'Bearer <<TOKEN>>')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
+      )
     })
   })
 })

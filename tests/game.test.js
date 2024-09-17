@@ -65,6 +65,7 @@ describe('Game Tests', () => {
           developers: ['66da1c63e9b730782e7dc65e'],
           platforms: ['66da1ceee9b730782e7dc662']
         })
+        .set('Authorization', 'Bearer <<TOKEN>>')
         .set('Accept', 'application/json')
 
       const createdGame = res.body.data
@@ -244,17 +245,78 @@ describe('Game Tests', () => {
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
     })
+
+    test.skip('Doing a put request to “v1/api/games/66d21b1d8f8e28baa6982ee8” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .put('/v1/api/games/66d21b1d8f8e28baa6982ee8')
+        .send({
+          name: 'Halo: Infinite',
+          genres: ['First-person shooter', 'Action'],
+          category: 'AAA',
+          gameModes: ['Single-player'],
+          audioLanguages: ['English', 'French', 'Spanish'],
+          textLanguages: ['English', 'French'],
+          releaseDate: '2021-12-08T00:00:00.000Z',
+          publishers: ['66da1c63e9b730782e7dc65e'],
+          developers: ['66da1c63e9b730782e7dc65e'],
+          platforms: ['66da1ceee9b730782e7dc663'],
+          similarGames: []
+        })
+        .set('Authorization', 'Bearer <<TOKEN>>')
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
+      )
+    })
   })
 
   describe('DELETE', () => {
     test.skip('Doing a delete request to “v1/api/games/66da1ea1e9b730782e7dc66b” should return a true indicating that the entity was successfully deleted.', async () => {
-      const res = await request(app).delete(
-        '/v1/api/games/66da1ea1e9b730782e7dc66b'
-      )
+      const res = await request(app)
+        .delete('/v1/api/games/66da1ea1e9b730782e7dc66b')
+        .set('Authorization', 'Bearer <<TOKEN>>')
 
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Deleted')
       expect(res.body.result).toEqual(true)
+    })
+
+    test('Doing a delete request to “v1/api/games/66da1b3ce9b730782e7dc65d” without a token should return an error.', async () => {
+      const res = await request(app).delete(
+        '/v1/api/games/66da1b3ce9b730782e7dc65d'
+      )
+
+      expect(res.status).toEqual(401)
+      expect(res.body.status).toEqual('Unauthorized')
+      expect(res.body.messages).toEqual('Token not provied')
+    })
+
+    test('Doing a delete request to “v1/api/games/66da1b3ce9b730782e7dc65d” with an incorrect token should return an error.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/games/66da1b3ce9b730782e7dc65d')
+        .set(
+          'Authorization',
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+        )
+
+      expect(res.status).toEqual(403)
+      expect(res.body.status).toEqual('Forbidden')
+      expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Doing a delete request to “v1/api/games/66d21b1d8f8e28baa6982ee8” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/games/66d21b1d8f8e28baa6982ee8')
+        .set('Authorization', 'Bearer <<TOKEN>>')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
+      )
     })
   })
 })

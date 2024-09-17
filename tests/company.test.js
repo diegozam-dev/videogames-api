@@ -193,13 +193,33 @@ describe('Company Tests', () => {
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
     })
+
+    test.skip('Doing a put request to “v1/api/companies/66d21b1d8f8e28baa6982ee8” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .put('/v1/api/companies/66d21b1d8f8e28baa6982ee8')
+        .send({
+          name: 'Electronic Arts',
+          country: 'United States of America',
+          startDate: '1982-05-27T00:00:00.000Z',
+          description:
+            'Electronic Arts (EA) is an American video game company that develops and publishes games across various genres, known for franchises like FIFA and Battlefield.'
+        })
+        .set('Authorization', 'Bearer <<TOKEN>>')
+        .set('Accept', 'application/json')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
+      )
+    })
   })
 
   describe('DELETE', () => {
     test.skip('Doing a delete request to “v1/api/companies/66da1b3ce9b730782e7dc65d” should return a true indicating that the entity was successfully deleted.', async () => {
-      const res = await request(app).delete(
-        '/v1/api/companies/66da1b3ce9b730782e7dc65d'
-      )
+      const res = await request(app)
+        .delete('/v1/api/companies/66da1b3ce9b730782e7dc65d')
+        .set('Authorization', 'Bearer <<TOKEN>>')
 
       expect(res.status).toEqual(200)
       expect(res.body.status).toEqual('Deleted')
@@ -227,6 +247,18 @@ describe('Company Tests', () => {
       expect(res.status).toEqual(403)
       expect(res.body.status).toEqual('Forbidden')
       expect(res.body.messages).toEqual('Token not valid')
+    })
+
+    test.skip('Doing a delete request to “v1/api/companies/66d21b1d8f8e28baa6982ee8” should return an error because the entity does not exist.', async () => {
+      const res = await request(app)
+        .delete('/v1/api/companies/66d21b1d8f8e28baa6982ee8')
+        .set('Authorization', 'Bearer <<TOKEN>>')
+
+      expect(res.status).toEqual(404)
+      expect(res.body.status).toEqual('Not Found')
+      expect(res.body.messages).toEqual(
+        'Entity, with id: 66d21b1d8f8e28baa6982ee8, does not found'
+      )
     })
   })
 })
