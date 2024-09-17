@@ -1,12 +1,8 @@
 components:
   schemas:
-    Character:
+    BasicCharacter:
       type: object
       properties:
-        _id:
-          type: string
-          format: ObjectId
-          description: Id del personaje.
         name:
           type: string
           maxLength: 50
@@ -24,90 +20,102 @@ components:
         games:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id del videojuego.
-              name:
-                type: string
-                description: Nombre del videojuego.
-              genres:
-                type: array
-                items:
-                  type: string
-                description: Géneros del videojuego.
-              category:
-                type: string
-                description: Categoría del videojuego.
-              gameModes:
-                type: array
-                items:
-                  type: string
-                description: Modos de juego del videojuego.
-              audioLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de audio del videojuego.
-              textLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de texto del videojuego.
-              releaseDate:
-                type: string
-                format: date-time
-                description: Fecha de lanzamiento del videojuego.
-              publishers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos publicados.
-              developers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos desarrollados.
-              platforms:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de las plataformas.
-              similarGames:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos similares.
+            type: string
+            format: 'ObjectId'
           description: Videojuegos dónde aparece el personaje.
         description:
           type: string
           description: Descripción del personaje.
-        createdAt:
-          type: string
-          format: date-time
-          description: Fecha de creación del documento.
-        updatedAt:
-          type: string
-          format: date-time
-          description: Fecha de la última actualización del documento.
       required:
         - name
         - games
         - description
 
-    Company:
+    CompleteCharacter:
+      allOf:
+        - $ref: '#/components/schemas/BasicCharacter'
+        - type: object
+          properties:
+            _id:
+              type: string
+              format: ObjectId
+              description: Id del personaje.
+            games:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id del videojuego.
+                  name:
+                    type: string
+                    description: Nombre del videojuego.
+                  genres:
+                    type: array
+                    items:
+                      type: string
+                    description: Géneros del videojuego.
+                  category:
+                    type: string
+                    description: Categoría del videojuego.
+                  gameModes:
+                    type: array
+                    items:
+                      type: string
+                    description: Modos de juego del videojuego.
+                  audioLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de audio del videojuego.
+                  textLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de texto del videojuego.
+                  releaseDate:
+                    type: string
+                    format: date-time
+                    description: Fecha de lanzamiento del videojuego.
+                  publishers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos publicados.
+                  developers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos desarrollados.
+                  platforms:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de las plataformas.
+                  similarGames:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos similares.
+              description: Videojuegos dónde aparece el personaje.
+            createdAt:
+              type: string
+              format: date-time
+              description: Fecha de creación del documento.
+            updatedAt:
+              type: string
+              format: date-time
+              description: Fecha de la última actualización del documento.
+
+    BasicCompany:
       type: object
       properties:
-        _id:
-          type: string
-          format: ObjectId
-          description: Id de la compañía.
         name:
           type: string
           description: Nombre de la compañía.
@@ -120,157 +128,177 @@ components:
         developed:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id del videojuego.
-              name:
-                type: string
-                description: Nombre del videojuego.
-              genres:
-                type: array
-                items:
-                  type: string
-                description: Géneros del videojuego.
-              category:
-                type: string
-                description: Categoría del videojuego.
-              gameModes:
-                type: array
-                items:
-                  type: string
-                description: Modos de juego del videojuego.
-              audioLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de audio del videojuego.
-              textLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de texto del videojuego.
-              releaseDate:
-                type: string
-                format: date-time
-                description: Fecha de lanzamiento del videojuego.
-              publishers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos publicados.
-              developers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos desarrollados.
-              platforms:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de las plataformas.
-              similarGames:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos similares.
+            type: string
+            format: ObjectId
           description: Videojuegos que ha desarrollado la compañía.
           default: null
         published:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id del videojuego.
-              name:
-                type: string
-                description: Nombre del videojuego.
-              genres:
-                type: array
-                items:
-                  type: string
-                description: Géneros del videojuego.
-              category:
-                type: string
-                description: Categoría del videojuego.
-              gameModes:
-                type: array
-                items:
-                  type: string
-                description: Modos de juego del videojuego.
-              audioLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de audio del videojuego.
-              textLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de texto del videojuego.
-              releaseDate:
-                type: string
-                format: date-time
-                description: Fecha de lanzamiento del videojuego.
-              publishers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos publicados.
-              developers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos desarrollados.
-              platforms:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de las plataformas.
-              similarGames:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos similares.
+            type: string
+            format: ObjectId
           description: Videojuegos que ha publicado la compañía.
           default: null
         description:
           type: string
           description: Descripción de la compañía.
-        createdAt:
-          type: string
-          format: date-time
-          description: Fecha de creación del documento.
-        updatedAt:
-          type: string
-          format: date-time
-          description: Fecha de la última actualización del documento.
       required:
         - name
         - country
         - startDate
         - description
 
-    Game:
+    CompleteCompany:
+      allOf:
+        - $ref: '#/components/schemas/BasicCompany'
+        - type: object
+          properties:
+            _id:
+              type: string
+              format: ObjectId
+              description: Id de la compañía.
+            developed:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id del videojuego.
+                  name:
+                    type: string
+                    description: Nombre del videojuego.
+                  genres:
+                    type: array
+                    items:
+                      type: string
+                    description: Géneros del videojuego.
+                  category:
+                    type: string
+                    description: Categoría del videojuego.
+                  gameModes:
+                    type: array
+                    items:
+                      type: string
+                    description: Modos de juego del videojuego.
+                  audioLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de audio del videojuego.
+                  textLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de texto del videojuego.
+                  releaseDate:
+                    type: string
+                    format: date-time
+                    description: Fecha de lanzamiento del videojuego.
+                  publishers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos publicados.
+                  developers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos desarrollados.
+                  platforms:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de las plataformas.
+                  similarGames:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos similares.
+              description: Videojuegos que ha desarrollado la compañía.
+              default: null
+            published:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id del videojuego.
+                  name:
+                    type: string
+                    description: Nombre del videojuego.
+                  genres:
+                    type: array
+                    items:
+                      type: string
+                    description: Géneros del videojuego.
+                  category:
+                    type: string
+                    description: Categoría del videojuego.
+                  gameModes:
+                    type: array
+                    items:
+                      type: string
+                    description: Modos de juego del videojuego.
+                  audioLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de audio del videojuego.
+                  textLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de texto del videojuego.
+                  releaseDate:
+                    type: string
+                    format: date-time
+                    description: Fecha de lanzamiento del videojuego.
+                  publishers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos publicados.
+                  developers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos desarrollados.
+                  platforms:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de las plataformas.
+                  similarGames:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos similares.
+              description: Videojuegos que ha publicado la compañía.
+              default: null
+            createdAt:
+              type: string
+              format: date-time
+              description: Fecha de creación del documento.
+            updatedAt:
+              type: string
+              format: date-time
+              description: Fecha de la última actualización del documento.
+
+    BasicGame:
       type: object
       properties:
-        _id:
-          type: string
-          format: ObjectId
-          description: Id del videojuego.
         name:
           type: string
           description: Nombre del videojuego.
@@ -304,168 +332,28 @@ components:
         publishers:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id de la compañía.
-              name:
-                type: string
-                description: Nombre de la compañía.
-              country:
-                type: string
-                description: País dónde se encuentra ubicada la compañía.
-              startDate:
-                type: date-time
-                description: Fecha en que la compañía fue fundada.
-              developed:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos que ha desarrollado la compañía.
-              published:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos que ha publicado la compañía.
-              description:
-                type: string
-                description: Descripción de la compañía.
+            type: string
+            format: ObjectId
           description: Compañías que publicaron el videojuego.
         developers:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id de la compañía.
-              name:
-                type: string
-                description: Nombre de la compañía.
-              country:
-                type: string
-                description: País dónde se encuentra ubicada la compañía.
-              startDate:
-                type: date-time
-                description: Fecha en que la compañía fue fundada.
-              developed:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos que ha desarrollado la compañía.
-              published:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos que ha publicado la compañía.
-              description:
-                type: string
-                description: Descripción de la compañía.
+            type: string
+            format: ObjectId
           description: Compañías que desarrollaron el videojuego.
         platforms:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id de la plataforma.
-              name:
-                type: string
-                description: Nombre de la plataforma.
-              abbreviation:
-                type: string
-                description: Abreviación del nombre de la plataforma.
-              launchDate:
-                type: string
-                format: date-time
-                description: Fecha del lanzamiento de la plataforma.
-              company:
-                type: string
-                format: ObjectId
-                description: Id de la compañía dueña de la plataforma.
+            type: string
+            format: ObjectId
           description: Plataformas dónde está disponible el videojuego.
         similarGames:
           type: array
           items:
-            type: object
-            properties:
-              _id:
-                type: string
-                format: ObjectId
-                description: Id del videojuego.
-              name:
-                type: string
-                description: Nombre del videojuego.
-              genres:
-                type: array
-                items:
-                  type: string
-                description: Géneros del videojuego.
-              category:
-                type: string
-                description: Categoría del videojuego.
-              gameModes:
-                type: array
-                items:
-                  type: string
-                description: Modos de juego del videojuego.
-              audioLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de audio del videojuego.
-              textLanguages:
-                type: array
-                items:
-                  type: string
-                description: Idiomas de texto del videojuego.
-              releaseDate:
-                type: string
-                format: date-time
-                description: Fecha de lanzamiento del videojuego.
-              publishers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos publicados.
-              developers:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos desarrollados.
-              platforms:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de las plataformas.
-              similarGames:
-                type: array
-                items:
-                  type: string
-                  format: ObjectId
-                description: Id de los videojuegos similares.
+            type: string
+            format: ObjectId
           description: Videojuegos similares.
           default: null
-        createdAt:
-          type: string
-          format: date-time
-          description: Fecha de creación del documento.
-        updatedAt:
-          type: string
-          format: date-time
-          description: Fecha de la última actualización del documento.
       required:
         - name
         - genres
@@ -478,13 +366,184 @@ components:
         - developers
         - platforms
 
-    Platform:
+    CompleteGame:
+      allOf:
+        - $ref: '#/components/schemas/BasicGame'
+        - type: object
+          properties:
+            _id:
+              type: string
+              format: ObjectId
+              description: Id del videojuego.
+            publishers:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id de la compañía.
+                  name:
+                    type: string
+                    description: Nombre de la compañía.
+                  country:
+                    type: string
+                    description: País dónde se encuentra ubicada la compañía.
+                  startDate:
+                    type: date-time
+                    description: Fecha en que la compañía fue fundada.
+                  developed:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos que ha desarrollado la compañía.
+                  published:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos que ha publicado la compañía.
+                  description:
+                    type: string
+                    description: Descripción de la compañía.
+              description: Compañías que publicaron el videojuego.
+            developers:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id de la compañía.
+                  name:
+                    type: string
+                    description: Nombre de la compañía.
+                  country:
+                    type: string
+                    description: País dónde se encuentra ubicada la compañía.
+                  startDate:
+                    type: date-time
+                    description: Fecha en que la compañía fue fundada.
+                  developed:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos que ha desarrollado la compañía.
+                  published:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos que ha publicado la compañía.
+                  description:
+                    type: string
+                    description: Descripción de la compañía.
+              description: Compañías que desarrollaron el videojuego.
+            platforms:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id de la plataforma.
+                  name:
+                    type: string
+                    description: Nombre de la plataforma.
+                  abbreviation:
+                    type: string
+                    description: Abreviación del nombre de la plataforma.
+                  launchDate:
+                    type: string
+                    format: date-time
+                    description: Fecha del lanzamiento de la plataforma.
+                  company:
+                    type: string
+                    format: ObjectId
+                    description: Id de la compañía dueña de la plataforma.
+              description: Plataformas dónde está disponible el videojuego.
+            similarGames:
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: ObjectId
+                    description: Id del videojuego.
+                  name:
+                    type: string
+                    description: Nombre del videojuego.
+                  genres:
+                    type: array
+                    items:
+                      type: string
+                    description: Géneros del videojuego.
+                  category:
+                    type: string
+                    description: Categoría del videojuego.
+                  gameModes:
+                    type: array
+                    items:
+                      type: string
+                    description: Modos de juego del videojuego.
+                  audioLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de audio del videojuego.
+                  textLanguages:
+                    type: array
+                    items:
+                      type: string
+                    description: Idiomas de texto del videojuego.
+                  releaseDate:
+                    type: string
+                    format: date-time
+                    description: Fecha de lanzamiento del videojuego.
+                  publishers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos publicados.
+                  developers:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos desarrollados.
+                  platforms:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de las plataformas.
+                  similarGames:
+                    type: array
+                    items:
+                      type: string
+                      format: ObjectId
+                    description: Id de los videojuegos similares.
+              description: Videojuegos similares.
+              default: null
+            createdAt:
+              type: string
+              format: date-time
+              description: Fecha de creación del documento.
+            updatedAt:
+              type: string
+              format: date-time
+              description: Fecha de la última actualización del documento.
+
+    BasicPlatform:
       type: object
       properties:
-        _id:
-          type: string
-          format: ObjectId
-          description: Id de la plataforma.
         name:
           type: string
           description: Nombre de la plataforma.
@@ -496,55 +555,64 @@ components:
           format: date-time
           description: Fecha del lanzamiento de la plataforma.
         company:
-          type: object
-          properties:
-            _id:
-              type: string
-              format: ObjectId
-              description: Id de la compañía.
-            name:
-              type: string
-              description: Nombre de la compañía.
-            country:
-              type: string
-              description: País dónde se encuentra ubicada la compañía.
-            startDate:
-              type: date-time
-              description: Fecha en que la compañía fue fundada.
-            developed:
-              type: array
-              items:
-                type: string
-                format: ObjectId
-              description: Id de los videojuegos que ha desarrollado la compañía.
-            published:
-              type: array
-              items:
-                type: string
-                format: ObjectId
-              description: Id de los videojuegos que ha publicado la compañía.
-            description:
-              type: string
-              description: Descripción de la compañía.
+          type: string
+          format: ObjectId
           description: Compañía dueña de la plataforma.
-        createdAt:
-          type: string
-          format: date-time
-          description: Fecha de creación del documento.
-        updatedAt:
-          type: string
-          format: date-time
-          description: Fecha de la última actualización del documento.
       required:
         - name
         - abbreviation
         - launchDate
         - company
 
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    CompletePlatform:
+      allOf:
+        - $ref: '#/components/schemas/BasicPlatform'
+        - type: object
+          properties:
+            _id:
+              type: string
+              format: ObjectId
+              description: Id de la plataforma.
+            company:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  format: ObjectId
+                  description: Id de la compañía.
+                name:
+                  type: string
+                  description: Nombre de la compañía.
+                country:
+                  type: string
+                  description: País dónde se encuentra ubicada la compañía.
+                startDate:
+                  type: date-time
+                  description: Fecha en que la compañía fue fundada.
+                developed:
+                  type: array
+                  items:
+                    type: string
+                    format: ObjectId
+                  description: Id de los videojuegos que ha desarrollado la compañía.
+                published:
+                  type: array
+                  items:
+                    type: string
+                    format: ObjectId
+                  description: Id de los videojuegos que ha publicado la compañía.
+                description:
+                  type: string
+                  description: Descripción de la compañía.
+              description: Compañía dueña de la plataforma.
+            createdAt:
+              type: string
+              format: date-time
+              description: Fecha de creación del documento.
+            updatedAt:
+              type: string
+              format: date-time
+              description: Fecha de la última actualización del documento.
 
     Error:
       type: object
