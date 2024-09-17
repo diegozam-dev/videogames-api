@@ -62,7 +62,16 @@ class BaseService {
       throw err
     }
 
-    return await this.repository.delete(id)
+    const result = await this.repository.delete(id)
+
+    if (!result) {
+      const err = new Error()
+      err.status = 404
+      err.message = `Entity, with id: ${id}, does not found`
+      throw err
+    }
+
+    return true
   }
 }
 

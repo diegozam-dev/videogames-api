@@ -175,6 +175,6 @@ characterRouter.put('/:characterId', verifyToken, characterController.update)
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
-characterRouter.delete('/:characterId', verifyToken, characterController.delete)
+characterRouter.delete('/:characterId', characterController.delete)
 
 export default characterRouter
