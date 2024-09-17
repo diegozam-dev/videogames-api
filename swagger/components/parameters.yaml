@@ -1,0 +1,135 @@
+components:
+  parameters:
+    pageSizeParam:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        default: 10
+      description: Número de resultados.
+      example: 10
+
+    pageNumParam:
+      name: pageNum
+      in: query
+      schema:
+        type: integer
+        default: 1
+      description: Número de página.
+      example: 1
+
+    genderParam:
+      name: gender
+      in: query
+      schema:
+        type: string
+        default: Unknown
+      description: Género del personaje.
+      example: Male
+
+    speciesParam:
+      name: species
+      in: query
+      schema:
+        type: string
+        default: Unknown
+      description: Especie del personaje.
+      example: Human
+
+    startDateParam:
+      name: startDate
+      in: query
+      schema:
+        type: string
+        format: date
+      description: Fecha de inicio.
+      example: '2005-08-13'
+
+    endDateParam:
+      name: startDate
+      in: query
+      schema:
+        type: string
+        format: date
+      description: Fecha de fin.
+      example: '2015-05-11'
+
+    countryParam:
+      name: country
+      in: query
+      schema:
+        type: string
+      description: País dónde se encuentra la compañía.
+      example: 'United States'
+
+    genreParam:
+      name: genre
+      in: query
+      schema:
+        type: string
+      description: Género del videojuego.
+      example: Action
+
+    categoryParam:
+      name: category
+      in: query
+      schema:
+        type: string
+      description: Categoría del videojuego.
+      example: AAA
+
+    companyParam:
+      name: company
+      in: query
+      schema:
+        type: string
+      description: Compañía dueña de la plataforma.
+      example: 'Sony Interactive Entertainment'
+
+    characterIdParam:
+      name: characterId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: ObjectId
+      description: Id de un personaje.
+      example: '66db4a4e523626bb53b88a32'
+
+    companyIdParam:
+      name: companyId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: ObjectId
+      description: Id de una compañía.
+      example: '66da1b3ce9b730782e7dc659'
+
+    gameIdParam:
+      name: gameId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: ObjectId
+      description: Id de un videojuego.
+      example: '66da1ea1e9b730782e7dc669'
+
+    platformIdParam:
+      name: platformId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: ObjectId
+      description: Id de una plataforma.
+      example: '66da1ea1e9b730782e7dc669'
+
+    authParam:
+      name: Authorization
+      in: header
+      required: true
+      schema:
+        $ref: '#/components/schemas/BearerAuth'
+      example: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
