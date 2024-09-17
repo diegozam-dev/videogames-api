@@ -6,6 +6,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            {
+              'status': 'Bad Request',
+              'messages':
+                ['Name cannot exceed 50 characters', 'Description is required']
+            }
 
     Unauthorized:
       description: No autorizado.
@@ -13,6 +19,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example: { 'status': 'Unauthorized', 'messages': 'Token not provied' }
 
     Forbidden:
       description: Prohibido. No tienes los permisos necesarios para acceder a este recurso.
@@ -20,6 +27,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example: { 'status': 'Forbidden', 'messages': 'Token not valid' }
 
     NotFound:
       description: El recurso solicitado no fue encontrado.
@@ -27,6 +35,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            {
+              'status': 'Not Found',
+              'messages': 'Entity, with id: 66db4a4e523226bb53b88a34, does not found'
+            }
 
     InternalServerError:
       description: Error interno del servidor.
