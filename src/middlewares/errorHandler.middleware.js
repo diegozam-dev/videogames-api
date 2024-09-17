@@ -21,7 +21,7 @@ const errorHandler = (err, req, res, next) => {
 
   return res.status(httpStatus).json({
     status: STATUS_CODES[httpStatus],
-    messages: messages || 'Internal server error'
+    messages: messages || 'Something bad is happening'
   })
 }
 
