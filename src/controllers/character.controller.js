@@ -60,9 +60,9 @@ class CharacterController {
     const { characterId } = req.params
 
     try {
-      const deletedCharacter = await _characterService.delete(characterId)
+      const result = await _characterService.delete(characterId)
 
-      res.status(200).json({ status: 'Deleted', data: deletedCharacter })
+      res.status(200).json({ status: 'Deleted', result })
     } catch (err) {
       next(err)
     }
