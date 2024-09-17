@@ -1,7 +1,7 @@
 {
-  "name": "repo",
+  "name": "videogames-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "This API provides information and management of video games, including characters, companies and platforms. Users can retrieve data about video games and related entities.",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -9,8 +9,16 @@
     "start": "node ./src/index.js",
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "videogames",
+    "API",
+    "CRUD",
+    "swagger",
+    "JWT",
+    "nodejs",
+    "express"
+  ],
+  "author": "Diego Zambrano",
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
