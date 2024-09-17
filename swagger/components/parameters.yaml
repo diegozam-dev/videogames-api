@@ -46,7 +46,7 @@ components:
       example: '2005-08-13'
 
     endDateParam:
-      name: startDate
+      name: endDate
       in: query
       schema:
         type: string
