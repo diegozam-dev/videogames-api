@@ -25,7 +25,7 @@ const companySchema = new Schema(
         select:
           'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
       },
-      default: null
+      default: []
     },
     published: {
       type: [Schema.Types.ObjectId],
@@ -35,7 +35,7 @@ const companySchema = new Schema(
         select:
           'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
       },
-      default: null
+      default: []
     },
     description: {
       type: String,

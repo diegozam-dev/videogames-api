@@ -72,7 +72,7 @@ const gameSchema = new Schema(
         select:
           'name genres category gameModes audioLanguages textLanguages realeaseDate publishers developers platforms similarGames'
       },
-      default: null
+      default: []
     }
   },
   { versionKey: false, timestamps: true }

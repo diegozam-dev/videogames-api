@@ -131,14 +131,12 @@ components:
             type: string
             format: ObjectId
           description: Videojuegos que ha desarrollado la compañía.
-          default: null
         published:
           type: array
           items:
             type: string
             format: ObjectId
           description: Videojuegos que ha publicado la compañía.
-          default: null
         description:
           type: string
           description: Descripción de la compañía.
@@ -221,7 +219,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos que ha desarrollado la compañía.
-              default: null
             published:
               type: array
               items:
@@ -286,7 +283,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos que ha publicado la compañía.
-              default: null
             createdAt:
               type: string
               format: date-time
@@ -353,7 +349,6 @@ components:
             type: string
             format: ObjectId
           description: Videojuegos similares.
-          default: null
       required:
         - name
         - genres
@@ -531,7 +526,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos similares.
-              default: null
             createdAt:
               type: string
               format: date-time
