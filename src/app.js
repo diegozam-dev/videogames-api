@@ -1,8 +1,6 @@
 import express, { json } from 'express'
 import cors from 'cors'
 import router from './routes/index.js'
-import errorHandler from './middlewares/errorHandler.middleware.js'
-import routeNotFound from './middlewares/routeNotFound.middleware.js'
 
 const app = express()
 
@@ -15,9 +13,5 @@ app.set('x-powered-by', null)
 
 // ROUTES
 app.use(router)
-
-// MIDDLEWARE
-app.use(errorHandler)
-app.use(routeNotFound)
 
 export default app
