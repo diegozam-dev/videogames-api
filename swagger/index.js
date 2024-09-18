@@ -5,6 +5,8 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'Videogames API',
+      description:
+        'Esta API proporciona información y gestión de videojuegos, incluidos personajes, empresas y plataformas. Los usuarios pueden recuperar datos sobre videojuegos y entidades relacionadas.',
       version: '1.0.0'
     }
   },
