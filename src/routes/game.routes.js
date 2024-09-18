@@ -1,10 +1,11 @@
 import { Router } from 'express'
+import apicache from 'apicache'
 import verifyToken from '../middlewares/verifyToken.middleware.js'
 import { GameController } from '../controllers/index.js'
 
 const gameController = new GameController()
-
 const gameRouter = Router()
+const cache = apicache.middleware
 
 /**
  * @swagger
@@ -37,7 +38,7 @@ const gameRouter = Router()
  *          items:
  *           $ref: '#/components/schemas/CompleteGame'
  */
-gameRouter.get('/', gameController.getAll)
+gameRouter.get('/', cache('5 minutes'), gameController.getAll)
 
 /**
  * @swagger
@@ -65,7 +66,7 @@ gameRouter.get('/', gameController.getAll)
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
-gameRouter.get('/:gameId', gameController.getById)
+gameRouter.get('/:gameId', cache('5 minutes'), gameController.getById)
 
 /**
  * @swagger

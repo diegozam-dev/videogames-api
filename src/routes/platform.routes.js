@@ -1,10 +1,11 @@
 import { Router } from 'express'
+import apicache from 'apicache'
 import verifyToken from '../middlewares/verifyToken.middleware.js'
 import { PlatformController } from '../controllers/index.js'
 
 const platformController = new PlatformController()
-
 const platformRouter = Router()
+const cache = apicache.middleware
 
 /**
  * @swagger
@@ -36,7 +37,7 @@ const platformRouter = Router()
  *          items:
  *           $ref: '#/components/schemas/CompletePlatform'
  */
-platformRouter.get('/', platformController.getAll)
+platformRouter.get('/', cache('5 minutes'), platformController.getAll)
 
 /**
  * @swagger
@@ -64,7 +65,11 @@ platformRouter.get('/', platformController.getAll)
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
-platformRouter.get('/:platformId', platformController.getById)
+platformRouter.get(
+  '/:platformId',
+  cache('5 minutes'),
+  platformController.getById
+)
 
 /**
  * @swagger

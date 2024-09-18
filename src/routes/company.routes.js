@@ -1,10 +1,11 @@
 import { Router } from 'express'
+import apicache from 'apicache'
 import verifyToken from '../middlewares/verifyToken.middleware.js'
 import { CompanyController } from '../controllers/index.js'
 
 const companyController = new CompanyController()
-
 const companyRouter = Router()
+const cache = apicache.middleware
 
 /**
  * @swagger
@@ -36,7 +37,7 @@ const companyRouter = Router()
  *          items:
  *           $ref: '#/components/schemas/CompleteCompany'
  */
-companyRouter.get('/', companyController.getAll)
+companyRouter.get('/', cache('5 minutes'), companyController.getAll)
 
 /**
  * @swagger
@@ -64,7 +65,7 @@ companyRouter.get('/', companyController.getAll)
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
-companyRouter.get('/:companyId', companyController.getById)
+companyRouter.get('/:companyId', cache('5 minutes'), companyController.getById)
 
 /**
  * @swagger

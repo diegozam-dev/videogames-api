@@ -1,10 +1,11 @@
 import { Router } from 'express'
+import apicache from 'apicache'
 import verifyToken from '../middlewares/verifyToken.middleware.js'
 import { CharacterController } from '../controllers/index.js'
 
 const characterController = new CharacterController()
-
 const characterRouter = Router()
+const cache = apicache.middleware
 
 /**
  * @swagger
@@ -35,7 +36,7 @@ const characterRouter = Router()
  *          items:
  *           $ref: '#/components/schemas/CompleteCharacter'
  */
-characterRouter.get('/', characterController.getAll)
+characterRouter.get('/', cache('5 minutes'), characterController.getAll)
 
 /**
  * @swagger
@@ -63,7 +64,11 @@ characterRouter.get('/', characterController.getAll)
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
-characterRouter.get('/:characterId', characterController.getById)
+characterRouter.get(
+  '/:characterId',
+  cache('5 minutes'),
+  characterController.getById
+)
 
 /**
  * @swagger
