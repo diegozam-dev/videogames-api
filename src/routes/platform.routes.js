@@ -18,7 +18,6 @@ const cache = apicache.middleware
  *   parameters:
  *    - $ref: '#/components/parameters/pageSizeParam'
  *    - $ref: '#/components/parameters/pageNumParam'
- *    - $ref: '#/components/parameters/companyParam'
  *    - $ref: '#/components/parameters/startDateParam'
  *    - $ref: '#/components/parameters/endDateParam'
  *   responses:

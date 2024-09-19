@@ -78,14 +78,6 @@ components:
       description: Categoría del videojuego.
       example: AAA
 
-    companyParam:
-      name: company
-      in: query
-      schema:
-        type: string
-      description: Compañía dueña de la plataforma.
-      example: 'Sony Interactive Entertainment'
-
     characterIdParam:
       name: characterId
       in: path

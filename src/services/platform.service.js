@@ -9,13 +9,12 @@ class PlatformService extends BaseService {
     _platformRepository = new PlatformRepository()
   }
 
-  async getAll({ startDate, endDate, company, pageSize, pageNum }) {
+  async getAll({ startDate, endDate, pageSize, pageNum }) {
     const filter = {}
 
     if (startDate || endDate) filter.launchDate = {}
     if (startDate) filter.launchDate.$gte = new Date(startDate)
     if (endDate) filter.launchDate.$lte = new Date(endDate)
-    if (company) filter.company = company
 
     return await _platformRepository.getAll({ filter, pageSize, pageNum })
   }
