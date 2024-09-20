@@ -1,5 +1,11 @@
 import mongoose, { Schema } from 'mongoose'
 import mongooseAutoPopulate from 'mongoose-autopopulate'
+import {
+  GAME_CATEGORIES,
+  GAME_GENRES,
+  GAME_MODES,
+  LANGUAGES
+} from '../utils/enums.utils.js'
 
 const gameSchema = new Schema(
   {
@@ -11,21 +17,37 @@ const gameSchema = new Schema(
     genres: {
       type: [String],
       maxlength: [50, 'Genres cannot exceed 50 characters'],
+      enum: {
+        values: GAME_GENRES,
+        message: '`{VALUE}` is not a valid genre for `{PATH}`.'
+      },
       required: [true, 'Genres are required']
     },
     category: {
       type: String,
       maxlength: [50, 'Category cannot exceed 50 characters'],
+      enum: {
+        values: GAME_CATEGORIES,
+        message: '`{VALUE}` is not a valid category for `{PATH}`.'
+      },
       required: [true, 'Category is required']
     },
     gameModes: {
       type: [String],
       maxlength: [50, 'Game modes cannot exceed 50 characters'],
+      enum: {
+        values: GAME_MODES,
+        message: '`{VALUE}` is not a valid game mode for `{PATH}`.'
+      },
       required: [true, 'Game modes are required']
     },
     languages: {
       type: [String],
       maxlength: [50, 'Languages cannot exceed 50 characters'],
+      enum: {
+        values: LANGUAGES,
+        message: '`{VALUE}` is not a valid language for `{PATH}`.'
+      },
       required: [true, 'Languages are required']
     },
     releaseDate: {

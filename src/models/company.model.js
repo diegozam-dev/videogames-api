@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose'
 import mongooseAutoPopulate from 'mongoose-autopopulate'
+import { COUNTRIES } from '../utils/enums.utils.js'
 
 const companySchema = new Schema(
   {
@@ -11,6 +12,10 @@ const companySchema = new Schema(
     country: {
       type: String,
       maxlength: [50, 'Country cannot exceed 50 characters'],
+      enum: {
+        values: COUNTRIES,
+        message: '`{VALUE}` is not a valid country for `{PATH}`.'
+      },
       required: [true, 'Country is required']
     },
     startDate: {
