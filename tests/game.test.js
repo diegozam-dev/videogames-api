@@ -58,8 +58,7 @@ describe('Game Tests', () => {
           genres: ['Third-person shooter'],
           category: 'AAA',
           gameModes: ['Single-player', 'Multiplayer'],
-          audioLanguages: ['English', 'Spanish'],
-          textLanguages: ['English', 'Spanish'],
+          languages: ['English', 'Spanish'],
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -76,8 +75,7 @@ describe('Game Tests', () => {
       expect(createdGame.genres).toEqual(['Third-person shooter'])
       expect(createdGame.category).toEqual('AAA')
       expect(createdGame.gameModes).toEqual(['Single-player', 'Multiplayer'])
-      expect(createdGame.audioLanguages).toEqual(['English', 'Spanish'])
-      expect(createdGame.textLanguages).toEqual(['English', 'Spanish'])
+      expect(createdGame.languages).toEqual(['English', 'Spanish'])
       expect(createdGame.releaseDate).toEqual('2019-09-10T00:00:00.000Z')
       expect(createdGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(createdGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
@@ -92,8 +90,7 @@ describe('Game Tests', () => {
           genres: ['Third-person shooter'],
           category: 'AAA',
           gameModes: ['Single-player', 'Multiplayer'],
-          audioLanguages: ['English', 'Spanish'],
-          textLanguages: ['English', 'Spanish'],
+          languages: ['English', 'Spanish'],
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -114,8 +111,7 @@ describe('Game Tests', () => {
           genres: ['Third-person shooter'],
           category: 'AAA',
           gameModes: ['Single-player', 'Multiplayer'],
-          audioLanguages: ['English', 'Spanish'],
-          textLanguages: ['English', 'Spanish'],
+          languages: ['English', 'Spanish'],
           releaseDate: '2019-09-10T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -141,7 +137,7 @@ describe('Game Tests', () => {
           category:
             'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et',
           gameModes: ['Single-player', 'Multiplayer'],
-          audioLanguages: ['English', 'Spanish'],
+          languages: ['English', 'Spanish'],
           releaseDate: '2019-09-10T00:00:00.000Z',
           developers: ['66da1c63e9b730782e7dc65e'],
           platforms: ['66da1ceee9b730782e7dc662']
@@ -164,8 +160,7 @@ describe('Game Tests', () => {
           genres: ['First-person shooter', 'Action'],
           category: 'AAA',
           gameModes: ['Single-player'],
-          audioLanguages: ['English', 'French', 'Spanish'],
-          textLanguages: ['English', 'French'],
+          languages: ['English', 'French', 'Spanish'],
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -183,12 +178,7 @@ describe('Game Tests', () => {
       expect(updatedGame.genres).toEqual(['First-person shooter', 'Action'])
       expect(updatedGame.category).toEqual('AAA')
       expect(updatedGame.gameModes).toEqual(['Single-player'])
-      expect(updatedGame.audioLanguages).toEqual([
-        'English',
-        'French',
-        'Spanish'
-      ])
-      expect(updatedGame.textLanguages).toEqual(['English', 'French'])
+      expect(updatedGame.languages).toEqual(['English', 'French', 'Spanish'])
       expect(updatedGame.releaseDate).toEqual('2021-12-08T00:00:00.000Z')
       expect(updatedGame.publishers).toEqual(['66da1c63e9b730782e7dc65e'])
       expect(updatedGame.developers).toEqual(['66da1c63e9b730782e7dc65e'])
@@ -204,8 +194,7 @@ describe('Game Tests', () => {
           genres: ['First-person shooter', 'Action'],
           category: 'AAA',
           gameModes: ['Single-player'],
-          audioLanguages: ['English', 'French', 'Spanish'],
-          textLanguages: ['English', 'French'],
+          languages: ['English', 'French', 'Spanish'],
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -227,8 +216,7 @@ describe('Game Tests', () => {
           genres: ['First-person shooter', 'Action'],
           category: 'AAA',
           gameModes: ['Single-player'],
-          audioLanguages: ['English', 'French', 'Spanish'],
-          textLanguages: ['English', 'French'],
+          languages: ['English', 'French', 'Spanish'],
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],
@@ -254,8 +242,7 @@ describe('Game Tests', () => {
           genres: ['First-person shooter', 'Action'],
           category: 'AAA',
           gameModes: ['Single-player'],
-          audioLanguages: ['English', 'French', 'Spanish'],
-          textLanguages: ['English', 'French'],
+          languages: ['English', 'French', 'Spanish'],
           releaseDate: '2021-12-08T00:00:00.000Z',
           publishers: ['66da1c63e9b730782e7dc65e'],
           developers: ['66da1c63e9b730782e7dc65e'],

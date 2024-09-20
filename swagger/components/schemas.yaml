@@ -65,16 +65,11 @@ components:
                     items:
                       type: string
                     description: Modos de juego del videojuego.
-                  audioLanguages:
+                  languages:
                     type: array
                     items:
                       type: string
-                    description: Idiomas de audio del videojuego.
-                  textLanguages:
-                    type: array
-                    items:
-                      type: string
-                    description: Idiomas de texto del videojuego.
+                    description: Idiomas del videojuego.
                   releaseDate:
                     type: string
                     format: date-time
@@ -180,16 +175,11 @@ components:
                     items:
                       type: string
                     description: Modos de juego del videojuego.
-                  audioLanguages:
+                  languages:
                     type: array
                     items:
                       type: string
-                    description: Idiomas de audio del videojuego.
-                  textLanguages:
-                    type: array
-                    items:
-                      type: string
-                    description: Idiomas de texto del videojuego.
+                    description: Idiomas del videojuego.
                   releaseDate:
                     type: string
                     format: date-time
@@ -311,16 +301,11 @@ components:
           items:
             type: string
           description: Modos de juego del videojuego.
-        audioLanguages:
+        languages:
           type: array
           items:
             type: string
-          description: Idiomas de audio del videojuego.
-        textLanguages:
-          type: array
-          items:
-            type: string
-          description: Idiomas de texto del videojuego.
+          description: Idiomas del videojuego.
         releaseDate:
           type: string
           format: date-time
@@ -487,16 +472,11 @@ components:
                     items:
                       type: string
                     description: Modos de juego del videojuego.
-                  audioLanguages:
+                  languages:
                     type: array
                     items:
                       type: string
-                    description: Idiomas de audio del videojuego.
-                  textLanguages:
-                    type: array
-                    items:
-                      type: string
-                    description: Idiomas de texto del videojuego.
+                    description: Idiomas del videojuego.
                   releaseDate:
                     type: string
                     format: date-time

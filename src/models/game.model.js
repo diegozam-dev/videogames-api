@@ -23,15 +23,10 @@ const gameSchema = new Schema(
       maxlength: [50, 'Game modes cannot exceed 50 characters'],
       required: [true, 'Game modes are required']
     },
-    audioLanguages: {
+    languages: {
       type: [String],
-      maxlength: [50, 'Audio languages cannot exceed 50 characters'],
-      required: [true, 'Audio languages are required']
-    },
-    textLanguages: {
-      type: [String],
-      maxlength: [50, 'Text languages cannot exceed 50 characters'],
-      required: [true, 'Text languages are required']
+      maxlength: [50, 'Languages cannot exceed 50 characters'],
+      required: [true, 'Languages are required']
     },
     releaseDate: {
       type: Date,
