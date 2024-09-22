@@ -118,14 +118,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos dónde aparece el personaje.
-            createdAt:
-              type: string
-              format: date-time
-              description: Fecha de creación del documento.
-            updatedAt:
-              type: string
-              format: date-time
-              description: Fecha de la última actualización del documento.
 
     BasicCompany:
       type: object
@@ -487,14 +479,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos que ha publicado la compañía.
-            createdAt:
-              type: string
-              format: date-time
-              description: Fecha de creación del documento.
-            updatedAt:
-              type: string
-              format: date-time
-              description: Fecha de la última actualización del documento.
 
     BasicGame:
       type: object
@@ -811,14 +795,6 @@ components:
                       format: ObjectId
                     description: Id de los videojuegos similares.
               description: Videojuegos similares.
-            createdAt:
-              type: string
-              format: date-time
-              description: Fecha de creación del documento.
-            updatedAt:
-              type: string
-              format: date-time
-              description: Fecha de la última actualización del documento.
 
     BasicPlatform:
       type: object
@@ -884,14 +860,6 @@ components:
                   type: string
                   description: Descripción de la compañía.
               description: Compañía dueña de la plataforma.
-            createdAt:
-              type: string
-              format: date-time
-              description: Fecha de creación del documento.
-            updatedAt:
-              type: string
-              format: date-time
-              description: Fecha de la última actualización del documento.
 
     Error:
       type: object
