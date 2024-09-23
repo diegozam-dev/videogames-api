@@ -35,6 +35,9 @@ const cache = apicache.middleware
  *          type: array
  *          items:
  *           $ref: '#/components/schemas/CompleteCharacter'
+ *       examples:
+ *        getAllCharactersExample:
+ *         $ref: '#/components/examples/getAllCharactersExample'
  */
 characterRouter.get('/', cache('5 minutes'), characterController.getAll)
 
@@ -61,6 +64,9 @@ characterRouter.get('/', cache('5 minutes'), characterController.getAll)
  *          example: Ok
  *         data:
  *          $ref: '#/components/schemas/CompleteCharacter'
+ *       examples:
+ *        getCharacterExample:
+ *         $ref: '#/components/examples/getCharacterExample'
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
@@ -86,6 +92,9 @@ characterRouter.get(
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicCharacter'
+ *      examples:
+ *        requestCreateCharacterExample:
+ *         $ref: '#/components/examples/requestCreateCharacterExample'
  *   responses:
  *    201:
  *     description: Creado
@@ -99,6 +108,9 @@ characterRouter.get(
  *          example: Created
  *         data:
  *          $ref: '#/components/schemas/CompleteCharacter'
+ *       examples:
+ *        responseCreateCharacterExample:
+ *         $ref: '#/components/examples/responseCreateCharacterExample'
  *    400:
  *     $ref: '#/components/responses/BadRequest'
  *    401:
@@ -126,6 +138,9 @@ characterRouter.post('/', verifyToken, characterController.create)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicCharacter'
+ *      examples:
+ *        requestUpdateCharacterExample:
+ *         $ref: '#/components/examples/requestUpdateCharacterExample'
  *   responses:
  *    200:
  *     description: Actualizado
@@ -139,6 +154,9 @@ characterRouter.post('/', verifyToken, characterController.create)
  *          example: Updated
  *         data:
  *          $ref: '#/components/schemas/CompleteCharacter'
+ *       examples:
+ *        responseUpdateCharacterExample:
+ *         $ref: '#/components/examples/responseUpdateCharacterExample'
  *    401:
  *     $ref: '#/components/responses/Unauthorized'
  *    403:

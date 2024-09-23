@@ -35,6 +35,9 @@ const cache = apicache.middleware
  *          type: array
  *          items:
  *           $ref: '#/components/schemas/CompletePlatform'
+ *       examples:
+ *        getAllPlatformsExample:
+ *         $ref: '#/components/examples/getAllPlatformsExample'
  */
 platformRouter.get('/', cache('5 minutes'), platformController.getAll)
 
@@ -61,6 +64,9 @@ platformRouter.get('/', cache('5 minutes'), platformController.getAll)
  *          example: Ok
  *         data:
  *          $ref: '#/components/schemas/CompletePlatform'
+ *       examples:
+ *        getPlatformExample:
+ *         $ref: '#/components/examples/getPlatformExample'
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
@@ -86,6 +92,9 @@ platformRouter.get(
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicPlatform'
+ *      examples:
+ *        requestCreatePlatformExample:
+ *         $ref: '#/components/examples/requestCreatePlatformExample'
  *   responses:
  *    201:
  *     description: Creado
@@ -99,6 +108,9 @@ platformRouter.get(
  *          example: Created
  *         data:
  *          $ref: '#/components/schemas/CompletePlatform'
+ *       examples:
+ *        responseCreatePlatformExample:
+ *         $ref: '#/components/examples/responseCreatePlatformExample'
  *    400:
  *     $ref: '#/components/responses/BadRequest'
  *    401:
@@ -126,6 +138,9 @@ platformRouter.post('/', verifyToken, platformController.create)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicPlatform'
+ *      examples:
+ *        requestUpdatePlatformExample:
+ *         $ref: '#/components/examples/requestUpdatePlatformExample'
  *   responses:
  *    200:
  *     description: Actualizado
@@ -139,6 +154,9 @@ platformRouter.post('/', verifyToken, platformController.create)
  *          example: Updated
  *         data:
  *          $ref: '#/components/schemas/CompletePlatform'
+ *       examples:
+ *        responseUpdatePlatformExample:
+ *         $ref: '#/components/examples/responseUpdatePlatformExample'
  *    401:
  *     $ref: '#/components/responses/Unauthorized'
  *    403:

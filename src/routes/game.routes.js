@@ -37,6 +37,9 @@ const cache = apicache.middleware
  *          type: array
  *          items:
  *           $ref: '#/components/schemas/CompleteGame'
+ *       examples:
+ *        getAllGamesExample:
+ *         $ref: '#/components/examples/getAllGamesExample'
  */
 gameRouter.get('/', cache('5 minutes'), gameController.getAll)
 
@@ -63,6 +66,9 @@ gameRouter.get('/', cache('5 minutes'), gameController.getAll)
  *          example: Ok
  *         data:
  *          $ref: '#/components/schemas/CompleteGame'
+ *       examples:
+ *        getGameExample:
+ *         $ref: '#/components/examples/getGameExample'
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
@@ -84,6 +90,9 @@ gameRouter.get('/:gameId', cache('5 minutes'), gameController.getById)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicGame'
+ *      examples:
+ *        requestCreateGameExample:
+ *         $ref: '#/components/examples/requestCreateGameExample'
  *   responses:
  *    201:
  *     description: Creado
@@ -97,6 +106,9 @@ gameRouter.get('/:gameId', cache('5 minutes'), gameController.getById)
  *          example: Created
  *         data:
  *          $ref: '#/components/schemas/CompleteGame'
+ *       examples:
+ *        responseCreateGameExample:
+ *         $ref: '#/components/examples/responseCreateGameExample'
  *    400:
  *     $ref: '#/components/responses/BadRequest'
  *    401:
@@ -124,6 +136,9 @@ gameRouter.post('/', verifyToken, gameController.create)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicGame'
+ *      examples:
+ *        requestUpdateGameExample:
+ *         $ref: '#/components/examples/requestUpdateGameExample'
  *   responses:
  *    200:
  *     description: Actualizado
@@ -137,6 +152,9 @@ gameRouter.post('/', verifyToken, gameController.create)
  *          example: Updated
  *         data:
  *          $ref: '#/components/schemas/CompleteGame'
+ *       examples:
+ *        responseUpdateGameExample:
+ *         $ref: '#/components/examples/responseUpdateGameExample'
  *    401:
  *     $ref: '#/components/responses/Unauthorized'
  *    403:

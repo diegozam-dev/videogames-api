@@ -1,0 +1,912 @@
+components:
+  examples:
+    getCharacterExample:
+      value:
+        status: Ok
+        data:
+          _id: 66ef170005009710d49398a5
+          name: Cloud Strife
+          gender: Male
+          species: Human
+          games:
+            - _id: 66ef1651b8984de068c38244
+              name: Final Fantasy VII
+              genres:
+                - Role-Playing (RPG)
+              category: Main Game
+              gameModes:
+                - Single-player
+              publishers:
+                - 66ed9c221a4d438635774f17
+              developers:
+                - 66ed9c221a4d438635774f17
+              platforms:
+                - 66ec4aa99b8266da74e7a7bc
+                - 66ec4ae59b8266da74e7a7c5
+                - 66ec6a30570f822cf49ff73d
+                - 66ec6a5d570f822cf49ff746
+              similarGames:
+                - 66edbc758b7597af9c6ad961
+          description: Cloud Strife is the main protagonist of Final Fantasy VII. He is a mercenary and former SOLDIER member with a dark past, and wields a huge sword called Buster Sword.
+
+    getAllCharactersExample:
+      value:
+        status: Ok
+        data:
+          - _id: 66ef170005009710d49398a5
+            name: Cloud Strife
+            gender: Male
+            species: Human
+            games:
+              - _id: 66ef1651b8984de068c38244
+                name: Final Fantasy VII
+                genres:
+                  - Role-Playing (RPG)
+                category: Main Game
+                gameModes:
+                  - Single-player
+                publishers:
+                  - 66ed9c221a4d438635774f17
+                developers:
+                  - 66ed9c221a4d438635774f17
+                platforms:
+                  - 66ec4aa99b8266da74e7a7bc
+                  - 66ec4ae59b8266da74e7a7c5
+                  - 66ec6a30570f822cf49ff73d
+                  - 66ec6a5d570f822cf49ff746
+                similarGames:
+                  - 66edbc758b7597af9c6ad961
+            description: Cloud Strife is the main protagonist of Final Fantasy VII. He is a
+              mercenary and former SOLDIER member with a dark past, and wields a huge sword
+              called Buster Sword.
+          - _id: 66ef2aa3e3851e9044ae68f7
+            name: Sephiroth
+            gender: Male
+            species: Human
+            games:
+              - _id: 66ef1651b8984de068c38244
+                name: Final Fantasy VII
+                genres:
+                  - Role-Playing (RPG)
+                category: Main Game
+                gameModes:
+                  - Single-player
+                publishers:
+                  - 66ed9c221a4d438635774f17
+                developers:
+                  - 66ed9c221a4d438635774f17
+                platforms:
+                  - 66ec4aa99b8266da74e7a7bc
+                  - 66ec4ae59b8266da74e7a7c5
+                  - 66ec6a30570f822cf49ff73d
+                  - 66ec6a5d570f822cf49ff746
+                similarGames:
+                  - 66edbc758b7597af9c6ad961
+            description: Sephiroth is the main antagonist of Final Fantasy VII. He is a former
+              member of SOLDIER, turned into a villain with superhuman powers, and seeks to
+              destroy the planet in order to create a new world.
+
+    requestCreateCharacterExample:
+      value:
+        name: "Carl 'CJ' Johnson"
+        gender: "Male"
+        species: "Human"
+        games:  
+          - "66ef343eef6e7845e8772b1e"
+        description: "Carl 'CJ' Johnson is the main protagonist of Grand Theft Auto: San Andreas. He returns to Los Santos after the death of his mother and becomes involved in gang wars, crime, and a quest to rebuild his family's reputation."
+
+    responseCreateCharacterExample:
+      value:
+        status: Created
+        data:
+          _id: "66ef3f38e8cb63e84d9f7310"
+          name: "Carl 'CJ' Johnson"
+          gender: "Male"
+          species: "Human"
+          games:
+            - _id: "66ef343eef6e7845e8772b1e"
+              name: "Grand Theft Auto: San Andreas"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec4ad69b8266da74e7a7bf"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec6a4e570f822cf49ff740"
+                - "66ec6a55570f822cf49ff743"
+              similarGames:
+                - "66ef3570ef6e7845e8772b23"
+          description: "Carl 'CJ' Johnson is the main protagonist of Grand Theft Auto: San Andreas. He returns to Los Santos after the death of his mother and becomes involved in gang wars, crime, and a quest to rebuild his family's reputation."
+
+    requestUpdateCharacterExample:
+      value:
+        name: "Carl Johnson"
+        gender: "Male"
+        species: "Human"
+        games:  
+          - "66ef343eef6e7845e8772b1e"
+        description: "Carl 'CJ' Johnson is the main protagonist of Grand Theft Auto: San Andreas."
+
+    responseUpdateCharacterExample:
+      value:
+        status: Updated
+        data:
+          _id: "66ef3f38e8cb63e84d9f7310"
+          name: "Carl Johnson"
+          gender: "Male"
+          species: "Human"
+          games:
+            - _id: "66ef343eef6e7845e8772b1e"
+              name: "Grand Theft Auto: San Andreas"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec4ad69b8266da74e7a7bf"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec6a4e570f822cf49ff740"
+                - "66ec6a55570f822cf49ff743"
+              similarGames:
+                - "66ef3570ef6e7845e8772b23"
+          description: "Carl 'CJ' Johnson is the main protagonist of Grand Theft Auto: San Andreas."
+
+    getCompanyExample:
+      value:
+        status: Ok
+        data:
+          _id: "66ef2e51e3851e9044ae68fa"
+          name: "Rockstar Games"
+          country: "United States"
+          startDate: "1998-12-01T00:00:00.000Z"
+          developed: []
+          published:
+            - _id: "66ef343eef6e7845e8772b1e"
+              name: "Grand Theft Auto: San Andreas"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec4ad69b8266da74e7a7bf"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec6a4e570f822cf49ff740"
+                - "66ec6a55570f822cf49ff743"
+              similarGames:
+                - "66ef3570ef6e7845e8772b23"
+            - _id: "66ef3570ef6e7845e8772b23"
+              name: "Grand Theft Auto V"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec6a55570f822cf49ff743"
+                - "66ec6a5d570f822cf49ff746"
+                - "66ec6a67570f822cf49ff749"
+                - "66ed9e841f10fc8cdcab39be"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec4ae59b8266da74e7a7c5"
+                - "66ec4aed9b8266da74e7a7c8"
+              similarGames:
+                - "66ef343eef6e7845e8772b1e"
+          description: "Rockstar Games is a video game developer and publisher famous for creating franchises such as Grand Theft Auto, Red Dead Redemption and Max Payne. Founded in 1998, it is based in New York and is known for its open-world games."
+
+    getAllCompaniesExample:
+      value:
+        status: Ok
+        data:
+          - _id: "66ec49b29b8266da74e7a7ba"
+            name: "Sony Interactive Entertainment"
+            country: "Japan"
+            startDate: "1993-11-16T00:00:00.000Z"
+            developed: []
+            published: []
+            description: "Sony Interactive Entertainment is the video game division of Sony, responsible for the creation of the PlayStation console and multiple successful video games. Headquartered in Tokyo, Japan, SIE has been a pioneer in the video game industry since its founding."
+          - _id: "66ec68a4570f822cf49ff72b"
+            name: "Nintendo"
+            country: "Japan"
+            startDate: "1889-09-23T00:00:00.000Z"
+            developed: []
+            published: []
+            description: "Nintendo is one of the most iconic companies in the video game industry. Headquartered in Kyoto, Japan, it is known for creating some of the most successful video game franchises, such as Mario, Zelda and Pokémon, and for its innovative video game consoles, from the Nintendo Entertainment System (NES) to the Nintendo Switch."
+
+    requestCreateCompanyExample:
+      value:
+        name: "Microsoft"
+        country: "United States"
+        startDate: "1975-04-04T00:00:00.000Z"
+        description: "Microsoft is a multinational technology company that entered the world of video games with its Xbox console. In addition to developing hardware, Microsoft is known for its video game development studios, such as Xbox Game Studios, and for the creation of services such as Xbox Game Pass."
+
+    responseCreateCompanyExample:
+      value:
+        status: Created
+        data:
+          _id: "66ec68f5570f822cf49ff72d"
+          name: "Microsoft"
+          country: "United States"
+          startDate: "1975-04-04T00:00:00.000Z"
+          developed: []
+          published: []
+          description: "Microsoft es una multinacional tecnol%C3%B3gica que entr%C3%B3 en el mundo de los videojuegos con su consola Xbox. Adem%C3%A1s de desarrollar hardware, Microsoft es conocida por sus estudios de desarrollo de videojuegos, como Xbox Game Studios, y por la creaci%C3%B3n de servicios como Xbox Game Pass."
+    
+    requestUpdateCompanyExample:
+      value:
+        name: "Microsoft"
+        country: "United States"
+        startDate: "1975-04-04T00:00:00.000Z"
+        description: "Microsoft is a multinational technology company that entered the world of video games with its Xbox console."
+
+    responseUpdateCompanyExample:
+      value:
+        status: Updated
+        data:
+          _id: "66ec68f5570f822cf49ff72d"
+          name: "Microsoft"
+          country: "United States"
+          startDate: "1975-04-04T00:00:00.000Z"
+          developed: []
+          published: []
+          description: "Microsoft is a multinational technology company that entered the world of video games with its Xbox console."
+
+    getGameExample:
+      value:
+        status: "Ok"
+        data:
+          _id: "66ef343eef6e7845e8772b1e"
+          name: "Grand Theft Auto: San Andreas"
+          genres:
+            - "Action"
+            - "Adventure"
+            - "Third-Person Shooter"
+            - "Open World"
+          category: "Main Game"
+          gameModes:
+            - "Single-player"
+            - "Multiplayer"
+          languages:
+            - "English"
+            - "Spanish"
+          releaseDate: "2004-10-26T00:00:00.000Z"
+          publishers:
+            - _id: "66ef2e51e3851e9044ae68fa"
+              name: "Rockstar Games"
+              country: "United States"
+              startDate: "1998-12-01T00:00:00.000Z"
+              developed: []
+              published:
+                - "66ef343eef6e7845e8772b1e"
+                - "66ef3570ef6e7845e8772b23"
+              description: "Rockstar Games is a video game developer and publisher famous for creating franchises such as Grand Theft Auto, Red Dead Redemption and Max Payne. Founded in 1998, it is based in New York and is known for its open-world games."
+          developers:
+            - _id: "66ef2e86e3851e9044ae68fc"
+              name: "Rockstar North"
+              country: "United Kingdom"
+              startDate: "1987-04-01T00:00:00.000Z"
+              developed: []
+              published: []
+              description: "Rockstar North, formerly known as DMA Design, is a video game developer based in Edinburgh, Scotland. It is one of the most important subsidiaries of Rockstar Games, responsible for the creation of the famous Grand Theft Auto series."
+          platforms:
+            - _id: "66ec4ad69b8266da74e7a7bf"
+              name: "PlayStation 2"
+              abbreviation: "PS2"
+              launchDate: "2000-03-04T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec4ade9b8266da74e7a7c2"
+              name: "PlayStation 3"
+              abbreviation: "PS3"
+              launchDate: "2006-11-11T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec6a4e570f822cf49ff740"
+              name: "Xbox"
+              abbreviation: "Xbox"
+              launchDate: "2001-11-15T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec6a55570f822cf49ff743"
+              name: "Xbox 360"
+              abbreviation: "X360"
+              launchDate: "2005-11-22T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+          similarGames:
+            - _id: "66ef3570ef6e7845e8772b23"
+              name: "Grand Theft Auto V"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec6a55570f822cf49ff743"
+                - "66ec6a5d570f822cf49ff746"
+                - "66ec6a67570f822cf49ff749"
+                - "66ed9e841f10fc8cdcab39be"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec4ae59b8266da74e7a7c5"
+                - "66ec4aed9b8266da74e7a7c8"
+              similarGames:
+                - "66ef343eef6e7845e8772b1e"
+
+    getAllGamesExample:
+      value:
+        status: "Ok"
+        data:
+          - _id: "66ef1651b8984de068c38244"
+            name: "Final Fantasy VII"
+            genres:
+              - "Role-Playing (RPG)"
+            category: "Main Game"
+            gameModes:
+              - "Single-player"
+            languages:
+              - "Japanese"
+              - "English"
+              - "French"
+              - "German"
+              - "Spanish"
+            releaseDate: "1997-01-31T00:00:00.000Z"
+            publishers:
+              - _id: "66ed9c221a4d438635774f17"
+                name: "Square Enix"
+                country: "Japan"
+                startDate: "2003-04-01T00:00:00.000Z"
+                developed:
+                  - "66ef1651b8984de068c38244"
+                  - "66edbc758b7597af9c6ad961"
+                published:
+                  - "66ef1651b8984de068c38244"
+                  - "66edbc758b7597af9c6ad961"
+                description: "Square Enix is a video game developer and distributor famous for iconic franchises such as Final Fantasy, Dragon Quest and Kingdom Hearts. Formed after the merger of Square and Enix in 2003, the company is headquartered in Tokyo, Japan."
+            developers:
+              - _id: "66ed9c221a4d438635774f17"
+                name: "Square Enix"
+                country: "Japan"
+                startDate: "2003-04-01T00:00:00.000Z"
+                developed:
+                  - "66ef1651b8984de068c38244"
+                  - "66edbc758b7597af9c6ad961"
+                published:
+                  - "66ef1651b8984de068c38244"
+                  - "66edbc758b7597af9c6ad961"
+                description: "Square Enix is a video game developer and distributor famous for iconic franchises such as Final Fantasy, Dragon Quest and Kingdom Hearts. Formed after the merger of Square and Enix in 2003, the company is headquartered in Tokyo, Japan."
+            platforms:
+              - _id: "66ec4aa99b8266da74e7a7bc"
+                name: "PlayStation"
+                abbreviation: "PS1"
+                launchDate: "1994-12-03T00:00:00.000Z"
+                company: "66ec49b29b8266da74e7a7ba"
+              - _id: "66ec4ae59b8266da74e7a7c5"
+                name: "PlayStation 4"
+                abbreviation: "PS4"
+                launchDate: "2013-11-15T00:00:00.000Z"
+                company: "66ec49b29b8266da74e7a7ba"
+              - _id: "66ec6a30570f822cf49ff73d"
+                name: "Nintendo Switch"
+                abbreviation: "Switch"
+                launchDate: "2017-03-03T00:00:00.000Z"
+                company: "66ec68a4570f822cf49ff72b"
+              - _id: "66ec6a5d570f822cf49ff746"
+                name: "Xbox One"
+                abbreviation: "XONE"
+                launchDate: "2013-11-22T00:00:00.000Z"
+                company: "66ec68f5570f822cf49ff72d"
+            similarGames:
+              - _id: "66edbc758b7597af9c6ad961"
+                name: "Final Fantasy VIII"
+                genres:
+                  - "Role-Playing (RPG)"
+                category: "Main Game"
+                gameModes:
+                  - "Single-player"
+                publishers:
+                  - "66ed9c221a4d438635774f17"
+                developers:
+                  - "66ed9c221a4d438635774f17"
+                platforms:
+                  - "66ec4aa99b8266da74e7a7bc"
+                  - "66ec4ae59b8266da74e7a7c5"
+                  - "66ec6a30570f822cf49ff73d"
+                  - "66ec6a5d570f822cf49ff746"
+                similarGames:
+                  - "66ef1651b8984de068c38244"
+
+          - _id: "66ef3570ef6e7845e8772b23"
+            name: "Grand Theft Auto V"
+            genres:
+              - "Action"
+              - "Adventure"
+              - "Third-Person Shooter"
+              - "Open World"
+            category: "Main Game"
+            gameModes:
+              - "Single-player"
+              - "Multiplayer"
+            languages:
+              - "English"
+            releaseDate: "2013-09-17T00:00:00.000Z"
+            publishers:
+              - _id: "66ef2e51e3851e9044ae68fa"
+                name: "Rockstar Games"
+                country: "United States"
+                startDate: "1998-12-01T00:00:00.000Z"
+                developed: []
+                published:
+                  - "66ef343eef6e7845e8772b1e"
+                  - "66ef3570ef6e7845e8772b23"
+                description: "Rockstar Games is a video game developer and publisher famous for creating franchises such as Grand Theft Auto, Red Dead Redemption and Max Payne. Founded in 1998, it is based in New York and is known for its open-world games."
+            developers:
+              - _id: "66ef2e86e3851e9044ae68fc"
+                name: "Rockstar North"
+                country: "United Kingdom"
+                startDate: "1987-04-01T00:00:00.000Z"
+                developed: []
+                published: []
+                description: "Rockstar North, formerly known as DMA Design, is a video game developer based in Edinburgh, Scotland. It is one of the most important subsidiaries of Rockstar Games, responsible for the creation of the famous Grand Theft Auto series."
+            platforms:
+              - _id: "66ec6a55570f822cf49ff743"
+                name: "Xbox 360"
+                abbreviation: "X360"
+                launchDate: "2005-11-22T00:00:00.000Z"
+                company: "66ec68f5570f822cf49ff72d"
+              - _id: "66ec6a5d570f822cf49ff746"
+                name: "Xbox One"
+                abbreviation: "XONE"
+                launchDate: "2013-11-22T00:00:00.000Z"
+                company: "66ec68f5570f822cf49ff72d"
+              - _id: "66ec6a67570f822cf49ff749"
+                name: "Xbox Series X"
+                abbreviation: "XSX"
+                launchDate: "2020-11-10T00:00:00.000Z"
+                company: "66ec68f5570f822cf49ff72d"
+              - _id: "66ed9e841f10fc8cdcab39be"
+                name: "Xbox Series S"
+                abbreviation: "XSS"
+                launchDate: "2020-11-10T00:00:00.000Z"
+                company: "66ec68f5570f822cf49ff72d"
+              - _id: "66ec4ade9b8266da74e7a7c2"
+                name: "PlayStation 3"
+                abbreviation: "PS3"
+                launchDate: "2006-11-11T00:00:00.000Z"
+                company: "66ec49b29b8266da74e7a7ba"
+              - _id: "66ec4ae59b8266da74e7a7c5"
+                name: "PlayStation 4"
+                abbreviation: "PS4"
+                launchDate: "2013-11-15T00:00:00.000Z"
+                company: "66ec49b29b8266da74e7a7ba"
+              - _id: "66ec4aed9b8266da74e7a7c8"
+                name: "PlayStation 5"
+                abbreviation: "PS5"
+                launchDate: "2020-11-12T00:00:00.000Z"
+                company: "66ec49b29b8266da74e7a7ba"
+            similarGames:
+              - _id: "66ef343eef6e7845e8772b1e"
+                name: "Grand Theft Auto: San Andreas"
+                genres:
+                  - "Action"
+                  - "Adventure"
+                  - "Third-Person Shooter"
+                  - "Open World"
+                category: "Main Game"
+                gameModes:
+                  - "Single-player"
+                  - "Multiplayer"
+                publishers:
+                  - "66ef2e51e3851e9044ae68fa"
+                developers:
+                  - "66ef2e86e3851e9044ae68fc"
+                platforms:
+                  - "66ec4aa99b8266da74e7a7bc"
+                  - "66ec4ae59b8266da74e7a7c5"
+                similarGames:
+                  - "66ef1651b8984de068c38244"
+                  - "66ef3570ef6e7845e8772b23"
+
+    requestCreateGameExample:
+      value:
+        name: "Grand Theft Auto V"
+        genres:
+          - "Action"
+          - "Adventure"
+          - "Third-Person Shooter"
+          - "Open World"
+        category: "Main Game"
+        gameModes:
+          - "Single-player"
+          - "Multiplayer"
+        languages:
+          - "English"
+        releaseDate: "2013-09-17T00:00:00.000Z"
+        publishers:
+          - "66ef2e51e3851e9044ae68fa"
+        developers:
+          - "66ef2e86e3851e9044ae68fc"
+        platforms:
+          - "66ec6a55570f822cf49ff743"
+          - "66ec6a5d570f822cf49ff746"
+          - "66ec6a67570f822cf49ff749"
+          - "66ed9e841f10fc8cdcab39be"
+          - "66ec4ade9b8266da74e7a7c2"
+          - "66ec4ae59b8266da74e7a7c5"
+          - "66ec4aed9b8266da74e7a7c8"
+        similarGames:
+          - "66ef343eef6e7845e8772b1e"
+
+    responseCreateGameExample:
+      value:
+        status: "Created"
+        data:
+          _id: "66ef3570ef6e7845e8772b23"
+          name: "Grand Theft Auto V"
+          genres:
+            - "Action"
+            - "Adventure"
+            - "Third-Person Shooter"
+            - "Open World"
+          category: "Main Game"
+          gameModes:
+            - "Single-player"
+            - "Multiplayer"
+          languages:
+            - "English"
+          releaseDate: "2013-09-17T00:00:00.000Z"
+          publishers:
+            - _id: "66ef2e51e3851e9044ae68fa"
+              name: "Rockstar Games"
+              country: "United States"
+              startDate: "1998-12-01T00:00:00.000Z"
+              developed: []
+              published:
+                - "66ef343eef6e7845e8772b1e"
+                - "66ef3570ef6e7845e8772b23"
+              description: "Rockstar Games is a video game developer and publisher famous for creating franchises such as Grand Theft Auto, Red Dead Redemption and Max Payne. Founded in 1998, it is based in New York and is known for its open-world games."
+          developers:
+            - _id: "66ef2e86e3851e9044ae68fc"
+              name: "Rockstar North"
+              country: "United Kingdom"
+              startDate: "1987-04-01T00:00:00.000Z"
+              developed: []
+              published: []
+              description: "Rockstar North, formerly known as DMA Design, is a video game developer based in Edinburgh, Scotland. It is one of the most important subsidiaries of Rockstar Games, responsible for the creation of the famous Grand Theft Auto series."
+          platforms:
+            - _id: "66ec6a55570f822cf49ff743"
+              name: "Xbox 360"
+              abbreviation: "X360"
+              launchDate: "2005-11-22T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec6a5d570f822cf49ff746"
+              name: "Xbox One"
+              abbreviation: "XONE"
+              launchDate: "2013-11-22T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec6a67570f822cf49ff749"
+              name: "Xbox Series X"
+              abbreviation: "XSX"
+              launchDate: "2020-11-10T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ed9e841f10fc8cdcab39be"
+              name: "Xbox Series S"
+              abbreviation: "XSS"
+              launchDate: "2020-11-10T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec4ade9b8266da74e7a7c2"
+              name: "PlayStation 3"
+              abbreviation: "PS3"
+              launchDate: "2006-11-11T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec4ae59b8266da74e7a7c5"
+              name: "PlayStation 4"
+              abbreviation: "PS4"
+              launchDate: "2013-11-15T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec4aed9b8266da74e7a7c8"
+              name: "PlayStation 5"
+              abbreviation: "PS5"
+              launchDate: "2020-11-12T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+          similarGames:
+            - _id: "66ef343eef6e7845e8772b1e"
+              name: "Grand Theft Auto: San Andreas"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec4ad69b8266da74e7a7bf"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec6a4e570f822cf49ff740"
+                - "66ec6a55570f822cf49ff743"
+              similarGames:
+                - "66ef3570ef6e7845e8772b23"
+
+    requestUpdateGameExample:
+      value:
+        name: "Grand Theft Auto V"
+        genres:
+          - "Action"
+          - "Adventure"
+          - "Third-Person Shooter"
+          - "Open World"
+        category: "Main Game"
+        gameModes:
+          - "Single-player"
+          - "Multiplayer"
+          - "Campaign"
+        languages:
+          - "English"
+          - "Spanish"
+        releaseDate: "2013-09-17T00:00:00.000Z"
+        publishers:
+          - "66ef2e51e3851e9044ae68fa"
+        developers:
+          - "66ef2e86e3851e9044ae68fc"
+        platforms:
+          - "66ec6a55570f822cf49ff743"
+          - "66ec6a5d570f822cf49ff746"
+          - "66ec6a67570f822cf49ff749"
+          - "66ed9e841f10fc8cdcab39be"
+          - "66ec4ade9b8266da74e7a7c2"
+          - "66ec4ae59b8266da74e7a7c5"
+          - "66ec4aed9b8266da74e7a7c8"
+        similarGames:
+          - "66ef343eef6e7845e8772b1e"
+
+    responseUpdateGameExample:
+      value:
+        status: "Updated"
+        data:
+          _id: "66ef3570ef6e7845e8772b23"
+          name: "Grand Theft Auto V"
+          genres:
+            - "Action"
+            - "Adventure"
+            - "Third-Person Shooter"
+            - "Open World"
+          category: "Main Game"
+          gameModes:
+            - "Single-player"
+            - "Multiplayer"
+            - "Campaign"
+          languages:
+            - "English"
+            - "Spanish"
+          releaseDate: "2013-09-17T00:00:00.000Z"
+          publishers:
+            - _id: "66ef2e51e3851e9044ae68fa"
+              name: "Rockstar Games"
+              country: "United States"
+              startDate: "1998-12-01T00:00:00.000Z"
+              developed: []
+              published:
+                - "66ef343eef6e7845e8772b1e"
+                - "66ef3570ef6e7845e8772b23"
+              description: "Rockstar Games is a video game developer and publisher famous for creating franchises such as Grand Theft Auto, Red Dead Redemption and Max Payne. Founded in 1998, it is based in New York and is known for its open-world games."
+          developers:
+            - _id: "66ef2e86e3851e9044ae68fc"
+              name: "Rockstar North"
+              country: "United Kingdom"
+              startDate: "1987-04-01T00:00:00.000Z"
+              developed: []
+              published: []
+              description: "Rockstar North, formerly known as DMA Design, is a video game developer based in Edinburgh, Scotland. It is one of the most important subsidiaries of Rockstar Games, responsible for the creation of the famous Grand Theft Auto series."
+          platforms:
+            - _id: "66ec6a55570f822cf49ff743"
+              name: "Xbox 360"
+              abbreviation: "X360"
+              launchDate: "2005-11-22T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec6a5d570f822cf49ff746"
+              name: "Xbox One"
+              abbreviation: "XONE"
+              launchDate: "2013-11-22T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec6a67570f822cf49ff749"
+              name: "Xbox Series X"
+              abbreviation: "XSX"
+              launchDate: "2020-11-10T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ed9e841f10fc8cdcab39be"
+              name: "Xbox Series S"
+              abbreviation: "XSS"
+              launchDate: "2020-11-10T00:00:00.000Z"
+              company: "66ec68f5570f822cf49ff72d"
+            - _id: "66ec4ade9b8266da74e7a7c2"
+              name: "PlayStation 3"
+              abbreviation: "PS3"
+              launchDate: "2006-11-11T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec4ae59b8266da74e7a7c5"
+              name: "PlayStation 4"
+              abbreviation: "PS4"
+              launchDate: "2013-11-15T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+            - _id: "66ec4aed9b8266da74e7a7c8"
+              name: "PlayStation 5"
+              abbreviation: "PS5"
+              launchDate: "2020-11-12T00:00:00.000Z"
+              company: "66ec49b29b8266da74e7a7ba"
+          similarGames:
+            - _id: "66ef343eef6e7845e8772b1e"
+              name: "Grand Theft Auto: San Andreas"
+              genres:
+                - "Action"
+                - "Adventure"
+                - "Third-Person Shooter"
+                - "Open World"
+              category: "Main Game"
+              gameModes:
+                - "Single-player"
+                - "Multiplayer"
+              publishers:
+                - "66ef2e51e3851e9044ae68fa"
+              developers:
+                - "66ef2e86e3851e9044ae68fc"
+              platforms:
+                - "66ec4ad69b8266da74e7a7bf"
+                - "66ec4ade9b8266da74e7a7c2"
+                - "66ec6a4e570f822cf49ff740"
+                - "66ec6a55570f822cf49ff743"
+              similarGames:
+                - "66ef3570ef6e7845e8772b23"
+
+    getPlatformExample:
+      value:
+        status: "Ok"
+        data:
+          _id: "66ec4ad69b8266da74e7a7bf"
+          name: "PlayStation 2"
+          abbreviation: "PS2"
+          launchDate: "2000-03-04T00:00:00.000Z"
+          company:
+            _id: "66ec49b29b8266da74e7a7ba"
+            name: "Sony Interactive Entertainment"
+            country: "Japan"
+            startDate: "1993-11-16T00:00:00.000Z"
+            developed: []
+            published: []
+            description: "Sony Interactive Entertainment is the video game division of Sony, responsible for the creation of the PlayStation console and multiple successful video games. Headquartered in Tokyo, Japan, SIE has been a pioneer in the video game industry since its founding."
+      
+    getAllPlatformsExample:
+      value:
+        status: "Ok"
+        data:
+          - _id: "66ec4aa99b8266da74e7a7bc"
+            name: "PlayStation"
+            abbreviation: "PS1"
+            launchDate: "1994-12-03T00:00:00.000Z"
+            company:
+              _id: "66ec49b29b8266da74e7a7ba"
+              name: "Sony Interactive Entertainment"
+              country: "Japan"
+              startDate: "1993-11-16T00:00:00.000Z"
+              developed: []
+              published: []
+              description: "Sony Interactive Entertainment is the video game division of Sony, responsible for the creation of the PlayStation console and multiple successful video games. Headquartered in Tokyo, Japan, SIE has been a pioneer in the video game industry since its founding."
+          - _id: "66ec4ad69b8266da74e7a7bf"
+            name: "PlayStation 2"
+            abbreviation: "PS2"
+            launchDate: "2000-03-04T00:00:00.000Z"
+            company:
+              _id: "66ec49b29b8266da74e7a7ba"
+              name: "Sony Interactive Entertainment"
+              country: "Japan"
+              startDate: "1993-11-16T00:00:00.000Z"
+              developed: []
+              published: []
+              description: "Sony Interactive Entertainment is the video game division of Sony, responsible for the creation of the PlayStation console and multiple successful video games. Headquartered in Tokyo, Japan, SIE has been a pioneer in the video game industry since its founding."
+
+    requestCreatePlatformExample:
+      value:
+        name: "Nintendo 64"
+        abbreviation: "N64"
+        launchDate: "1996-06-23T00:00:00.000Z"
+        company:
+          _id: "66ec68a4570f822cf49ff72b"
+          name: "Nintendo"
+          country: "Japan"
+          startDate: "1889-09-23T00:00:00.000Z"
+          developed: []
+          published: []
+          description: "Nintendo is one of the most iconic companies in the video game industry. Headquartered in Kyoto, Japan, it is known for creating some of the most successful video game franchises, such as Mario, Zelda and Pokémon, and for its innovative video game consoles, from the Nintendo Entertainment System (NES) to the Nintendo Switch."
+
+    responseCreatePlatformExample:
+      value:
+        status: "Created"
+        data:
+          _id: "66ec6a20570f822cf49ff737"
+          name: "Nintendo 64"
+          abbreviation: "N64"
+          launchDate: "1996-06-23T00:00:00.000Z"
+          company:
+            _id: "66ec68a4570f822cf49ff72b"
+            name: "Nintendo"
+            country: "Japan"
+            startDate: "1889-09-23T00:00:00.000Z"
+            developed: []
+            published: []
+            description: "Nintendo is one of the most iconic companies in the video game industry. Headquartered in Kyoto, Japan, it is known for creating some of the most successful video game franchises, such as Mario, Zelda and Pokémon, and for its innovative video game consoles, from the Nintendo Entertainment System (NES) to the Nintendo Switch."
+
+    requestUpdatePlatformExample:
+      value:
+        name: "Nintendo 64"
+        abbreviation: "N64"
+        launchDate: "1996-06-23T00:00:00.000Z"
+        company:
+          _id: "66ec68a4570f822cf49ff72b"
+          name: "Nintendo"
+          country: "Japan"
+          startDate: "1889-09-23T00:00:00.000Z"
+          developed: []
+          published: []
+          description: "Nintendo is one of the most iconic companies in the video game industry."
+
+    responseUpdatePlatformExample:
+      value:
+        status: "Updated"
+        data:
+          _id: "66ec6a20570f822cf49ff737"
+          name: "Nintendo 64"
+          abbreviation: "N64"
+          launchDate: "1996-06-23T00:00:00.000Z"
+          company:
+            _id: "66ec68a4570f822cf49ff72b"
+            name: "Nintendo"
+            country: "Japan"
+            startDate: "1889-09-23T00:00:00.000Z"
+            developed: []
+            published: []
+            description: "Nintendo is one of the most iconic companies in the video game industry."
+          
+          

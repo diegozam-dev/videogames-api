@@ -36,6 +36,9 @@ const cache = apicache.middleware
  *          type: array
  *          items:
  *           $ref: '#/components/schemas/CompleteCompany'
+ *       examples:
+ *        getAllCompaniesExample:
+ *         $ref: '#/components/examples/getAllCompaniesExample'
  */
 companyRouter.get('/', cache('5 minutes'), companyController.getAll)
 
@@ -62,6 +65,9 @@ companyRouter.get('/', cache('5 minutes'), companyController.getAll)
  *          example: Ok
  *         data:
  *          $ref: '#/components/schemas/CompleteCompany'
+ *       examples:
+ *        getCompanyExample:
+ *         $ref: '#/components/examples/getCompanyExample'
  *    404:
  *     $ref: '#/components/responses/NotFound'
  */
@@ -83,6 +89,9 @@ companyRouter.get('/:companyId', cache('5 minutes'), companyController.getById)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicCompany'
+ *      examples:
+ *        requestCreateCompanyExample:
+ *         $ref: '#/components/examples/requestCreateCompanyExample'
  *   responses:
  *    201:
  *     description: Creado
@@ -96,6 +105,9 @@ companyRouter.get('/:companyId', cache('5 minutes'), companyController.getById)
  *          example: Created
  *         data:
  *          $ref: '#/components/schemas/CompleteCompany'
+ *       examples:
+ *        responseCreateCompanyExample:
+ *         $ref: '#/components/examples/responseCreateCompanyExample'
  *    400:
  *     $ref: '#/components/responses/BadRequest'
  *    401:
@@ -123,6 +135,9 @@ companyRouter.post('/', verifyToken, companyController.create)
  *     application/json:
  *      schema:
  *       $ref: '#/components/schemas/BasicCompany'
+ *      examples:
+ *        requestUpdateCompanyExample:
+ *         $ref: '#/components/examples/requestUpdateCompanyExample'
  *   responses:
  *    200:
  *     description: Actualizado
@@ -136,6 +151,9 @@ companyRouter.post('/', verifyToken, companyController.create)
  *          example: Updated
  *         data:
  *          $ref: '#/components/schemas/CompleteCompany'
+ *       examples:
+ *        responseUpdateCompanyExample:
+ *         $ref: '#/components/examples/responseUpdateCompanyExample'
  *    401:
  *     $ref: '#/components/responses/Unauthorized'
  *    403:
