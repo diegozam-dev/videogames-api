@@ -19,7 +19,7 @@
     "express"
   ],
   "author": "Diego Zambrano",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "apicache": "1.6.3",
     "cors": "2.8.5",
